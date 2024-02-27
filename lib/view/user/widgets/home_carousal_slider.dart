@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 
 home_carousal_slider() {
   return CarouselSlider(
-    options: CarouselOptions(height: 200.0),
+    options: CarouselOptions(height: 170.0),
     items: [1, 2, 3, 4, 5].map((i) {
       return Builder(
         builder: (BuildContext context) {

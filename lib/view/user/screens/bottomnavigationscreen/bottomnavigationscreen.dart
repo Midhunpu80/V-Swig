@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:map_int/main.dart';
 import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/utilities/colors.dart';
-import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
 
 class bottomnavigationbarscreen extends StatelessWidget {
   List allpages = [homescreen(), homescreen(), homescreen(), homescreen()];
@@ -24,6 +23,7 @@ class bottomnavigationbarscreen extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: CircleAvatar(
+                  radius: 15,
                   backgroundColor: wh,
                   backgroundImage: const AssetImage('images/home.png'),
                 ),
@@ -31,18 +31,21 @@ class bottomnavigationbarscreen extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                   icon: CircleAvatar(
+                    radius: 15,
                     backgroundColor: wh,
-                    backgroundImage: const AssetImage("images/learning.png"),
+                    backgroundImage: const AssetImage("images/loupe.png"),
                   ),
-                  label: "Catogery"),
+                  label: "Search"),
               BottomNavigationBarItem(
                   icon: CircleAvatar(
+                    radius: 15,
                     backgroundColor: wh,
                     backgroundImage: const AssetImage("images/subscribe.png"),
                   ),
                   label: "Subscrptions"),
               BottomNavigationBarItem(
                   icon: CircleAvatar(
+                    radius: 15,
                     backgroundColor: wh,
                     backgroundImage: const AssetImage("images/user.png"),
                   ),
