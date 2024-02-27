@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/view/user/screens/catogeryscreen.dart/catogery_screen.dart';
+import 'package:map_int/view/user/screens/popular_course_screen/popular_course_screen.dart';
 import 'package:map_int/view/user/widgets/Home_top_nvabar.dart';
 import 'package:map_int/view/user/widgets/home_carousal_slider.dart';
 import 'package:map_int/view/user/widgets/home_catogeory.dart';
@@ -44,7 +45,6 @@ class homescreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       Get.to(() => catogerory_screen());
-                      
                     },
                     child: all_text(
                         txt: "View all",
@@ -69,7 +69,9 @@ class homescreen extends StatelessWidget {
                       wei: FontWeight.bold,
                       max: 1),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => popular_course_screen());
+                    },
                     child: all_text(
                         txt: "View all",
                         col: blu,

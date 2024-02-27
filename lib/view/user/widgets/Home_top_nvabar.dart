@@ -36,17 +36,17 @@ home_top_navbar() {
                 borderRadius: BorderRadius.circular(1.h),
               ),
             )),
-        Padding(
-            padding: const EdgeInsets.all(2),
-            child: Container(
-              height: 3.h,
-              width: 12.w,
-              decoration: BoxDecoration(
-                image: const DecorationImage(
-                    image: AssetImage("images/loupe.png")),
-                borderRadius: BorderRadius.circular(1.h),
-              ),
-            )),
+        // Padding(
+        //     padding: const EdgeInsets.all(2),
+        //     child: Container(
+        //       height: 3.h,
+        //       width: 12.w,
+        //       decoration: BoxDecoration(
+        //         image: const DecorationImage(
+        //             image: AssetImage("images/loupe.png")),
+        //         borderRadius: BorderRadius.circular(1.h),
+        //       ),
+        //     )),
         Padding(
             padding: const EdgeInsets.all(2),
             child: Container(

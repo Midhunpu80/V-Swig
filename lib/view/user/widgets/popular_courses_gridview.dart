@@ -1,25 +1,32 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:sizer/sizer.dart';
 
-home_popular_course() {
+popualar_course_gridview() {
   return Container(
-    height: 35.h,
+    height: 85.h,
     width: 100.w,
-    child: ListView.separated(
-        scrollDirection: Axis.horizontal,
+    child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, childAspectRatio: 0.7),
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(2, 6),
+                        blurRadius: 0.10,
+                        spreadRadius: 0.5,
+                        color: gy.withOpacity(0.2))
+                  ],
                   borderRadius: BorderRadius.circular(2.h),
                   color: wh,
                   border: Border.all(width: 1, color: gy.withOpacity(0.2))),
-              height: 39.h,
+              height: 35.h,
               width: 50.w,
               child: Column(
                 children: [
@@ -46,7 +53,7 @@ home_popular_course() {
                   Row(
                     children: [
                       SizedBox(
-                        width: 2.h,
+                        width: 1.h,
                       ),
                       SizedBox(
                         width: 1.h,
@@ -58,7 +65,7 @@ home_popular_course() {
                           wei: FontWeight.bold,
                           max: 1),
                       SizedBox(
-                        width: 7.h,
+                        width: 4.h,
                       ),
                       all_text(
                           txt: "₹150",
@@ -71,7 +78,7 @@ home_popular_course() {
                   Row(
                     children: [
                       SizedBox(
-                        width: 3.h,
+                        width: 2.h,
                       ),
                       all_text(
                           txt: "13 lessons",
@@ -135,10 +142,6 @@ home_popular_course() {
               ),
             ),
           );
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox();
-        },
-        itemCount: 20),
+        }),
   );
 }
