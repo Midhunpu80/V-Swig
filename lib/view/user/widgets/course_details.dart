@@ -1,16 +1,19 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:map_int/view/user/widgets/instructor.dart';
 
 import 'package:map_int/view/user/widgets/starrating.dart';
+import 'package:map_int/view/user/widgets/student_feedback.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
+import 'package:readmore/readmore.dart';
 import 'package:sizer/sizer.dart';
 
 course_details() {
   return SliverAppBar(
     backgroundColor: wh,
-    toolbarHeight: 100.h,
+    toolbarHeight: 380.h,
     leading: const Icon(
       Icons.abc,
       color: Colors.transparent,
@@ -121,13 +124,114 @@ course_details() {
         bulletpoint(ico: Icons.language, label: "English"),
         bulletpoint(ico: Icons.subtitles, label: "English"),
         SizedBox(
-          height: 3.h,
+          height: 2.h,
         ),
-        newtext(txt: "₹ 499", left: 2.h, siz: 21.sp, wei: FontWeight.bold),
+        newtext(txt: "₹ 499", left: 2.h, siz: 20.sp, wei: FontWeight.bold),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Container(height: 6.h, width: 100.w,color: pp, child: Center(child: all_text(txt: "Buy now", col: bl, siz: 15.sp, wei: FontWeight.bold, max: 1)),),
-        )
+          child: Container(
+            height: 6.h,
+            width: 100.w,
+            color: pp,
+            child: Center(
+                child: all_text(
+                    txt: "Buy now",
+                    col: bl,
+                    siz: 15.sp,
+                    wei: FontWeight.bold,
+                    max: 1)),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              height: 6.h,
+              width: 45.w,
+              decoration:
+                  BoxDecoration(border: Border.all(width: 2, color: bl)),
+              child: Center(
+                child: all_text(
+                    txt: "Add to Cart",
+                    col: bl,
+                    siz: 12.sp,
+                    wei: FontWeight.bold,
+                    max: 1),
+              ),
+            ),
+            Container(
+              height: 6.h,
+              width: 45.w,
+              decoration:
+                  BoxDecoration(border: Border.all(width: 2, color: bl)),
+              child: Center(
+                  child: all_text(
+                      txt: "Add to Whishlist",
+                      col: bl,
+                      siz: 12.sp,
+                      wei: FontWeight.bold,
+                      max: 1)),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 2.h,
+        ),
+        InkWell(
+          onTap: () {
+            print("curriculam");
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 5.h,
+              width: 100.w,
+              decoration:
+                  BoxDecoration(border: Border.all(width: 2, color: bl)),
+              child: Center(
+                  child: all_text(
+                      txt: "Curriculam",
+                      col: bl,
+                      siz: 12.sp,
+                      wei: FontWeight.bold,
+                      max: 1)),
+            ),
+          ),
+        ),
+        newtext(
+            txt: "Description", left: 2.h, siz: 13.sp, wei: FontWeight.bold),
+        Padding(
+          padding: EdgeInsets.only(left: 2.h, right: 1.h, top: 2.h),
+          child: ReadMoreText(
+            'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.' *
+                12,
+            trimLines: 29,
+            colorClickableText: pp,
+            trimMode: TrimMode.Line,
+            style: TextStyle(color: bl),
+            trimCollapsedText: 'Show more',
+            trimExpandedText: 'Show less',
+            moreStyle: TextStyle(
+                fontSize: 13.sp, fontWeight: FontWeight.bold, color: bl),
+          ),
+        ),
+        instructor(),
+        student_feedback(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 7.h,
+            width: 100.w,
+            decoration: BoxDecoration(border: Border.all(width: 2, color: bl)),
+            child: Center(
+                child: all_text(
+                    txt: "See More Reviews",
+                    col: bl,
+                    siz: 13.sp,
+                    wei: FontWeight.bold,
+                    max: 1)),
+          ),
+        ),
       ],
     ),
   );
@@ -160,6 +264,6 @@ newtext(
   return Padding(
     padding: EdgeInsets.only(left: left, top: 1.h),
     child: SizedBox(
-        child: all_text(txt: "₹ 499", col: bl, siz: siz, wei: wei, max: 1)),
+        child: all_text(txt: txt, col: bl, siz: siz, wei: wei, max: 1)),
   );
 }

@@ -9,7 +9,7 @@ Color sr = Color.fromARGB(255, 0, 2, 67);
 
 Color wh = const Color.fromARGB(255, 0, 0, 0);
 
-Color pp = Colors.deepPurple;
+Color pp = const Color.fromARGB(255, 68, 0, 255);
 Color yl = const Color.fromARGB(255, 255, 230, 0);
 Color gr = const Color.fromARGB(255, 0, 255, 8);
 Color or = Colors.orange;
