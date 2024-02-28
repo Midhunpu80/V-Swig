@@ -73,7 +73,7 @@ student_feedback() {
                           child: ReadMoreText(
                             'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.' *
                                 2,
-                            trimLines: 2,
+                            trimLines: 5,
                             colorClickableText: pp,
                             trimMode: TrimMode.Line,
                             style: TextStyle(color: bl),
