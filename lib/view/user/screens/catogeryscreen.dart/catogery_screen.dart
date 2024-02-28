@@ -11,6 +11,7 @@ class catogerory_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: wh,
       body: SingleChildScrollView(
         child: Column(
           children: [

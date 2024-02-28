@@ -11,12 +11,7 @@ home_top_navbar() {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: 5.h,
-            width: 12.w,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(1.h), color: re),
-          ),
+          child: CircleAvatar(backgroundColor: re,)
         ),
         all_text(
             txt: "Midhun pu ",
@@ -25,39 +20,31 @@ home_top_navbar() {
             wei: FontWeight.w600,
             max: 1),
         Spacer(),
-        Padding(
-            padding: const EdgeInsets.all(2),
-            child: Container(
-              height: 3.h,
-              width: 12.w,
-              decoration: BoxDecoration(
-                image:
-                    const DecorationImage(image: AssetImage("images/bag.png")),
-                borderRadius: BorderRadius.circular(1.h),
-              ),
-            )),
         // Padding(
         //     padding: const EdgeInsets.all(2),
         //     child: Container(
         //       height: 3.h,
         //       width: 12.w,
         //       decoration: BoxDecoration(
-        //         image: const DecorationImage(
-        //             image: AssetImage("images/loupe.png")),
+        //         color: bl,
+        //         image:
+        //             const DecorationImage(image: AssetImage("images/bag.png")),
         //         borderRadius: BorderRadius.circular(1.h),
         //       ),
         //     )),
-        Padding(
-            padding: const EdgeInsets.all(2),
-            child: Container(
-              height: 3.h,
-              width: 12.w,
-              decoration: BoxDecoration(
-                image:
-                    const DecorationImage(image: AssetImage("images/bell.png")),
-                borderRadius: BorderRadius.circular(1.h),
-              ),
-            ))
+     
+        // Padding(
+        //     padding: const EdgeInsets.all(2),
+        //     child: Container(
+        //       height: 3.h,
+        //       width: 12.w,
+        //       decoration: BoxDecoration(
+        //         color: bl,
+        //         image:
+        //             const DecorationImage(image: AssetImage("images/bell.png")),
+        //         borderRadius: BorderRadius.circular(1.h),
+        //       ),
+        //     ))
       ],
     ),
   );

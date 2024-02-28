@@ -10,7 +10,7 @@ catogoery_search() {
     ),
     child: Container(
       height: 7.h,
-      width: 70.w,
+      width: 80.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(1.h),
           border: Border.all(width: 1, color: gy)),
@@ -29,8 +29,8 @@ catogoery_search() {
             Padding(
               padding: EdgeInsets.only(top: 2.h),
               child: SizedBox(
-                  height: 3.h,
-                  width: 50.w,
+                  height: 4.h,
+                  width: 60.w,
                   child: TextFormField(
                     decoration: InputDecoration(
                         hintStyle: TextStyle(fontSize: 12.sp, color: gy),

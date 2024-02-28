@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 Color re = const Color.fromARGB(255, 255, 17, 0);
 
-Color wh = const Color.fromARGB(255, 255, 255, 255);
-Color sr =Color.fromARGB(255, 0, 2, 67);
+Color bl = const Color.fromARGB(255, 255, 255, 255);
+Color sr = Color.fromARGB(255, 0, 2, 67);
 
-Color bl = const Color.fromARGB(255, 0, 0, 0);
+Color wh = const Color.fromARGB(255, 0, 0, 0);
 
-Color pp = Colors.purple;
+Color pp = Colors.deepPurple;
 Color yl = const Color.fromARGB(255, 255, 230, 0);
 Color gr = const Color.fromARGB(255, 0, 255, 8);
 Color or = Colors.orange;
@@ -18,4 +18,3 @@ Color pi = Colors.pink;
 Color gy = Colors.grey;
 
 Color blu = Colors.blue;
-

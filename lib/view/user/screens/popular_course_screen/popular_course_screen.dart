@@ -9,20 +9,23 @@ class popular_course_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: wh
+      ,
       appBar: AppBar(
+        backgroundColor: wh,
         actions: [
           IconButton(
               onPressed: () {},
               icon: CircleAvatar(
                 radius: 13,
-                backgroundColor: wh,
+                backgroundColor: bl,
                 backgroundImage: const AssetImage("images/bell.png"),
               )),
           IconButton(
               onPressed: () {},
               icon: CircleAvatar(
                 radius: 13,
-                backgroundColor: wh,
+                backgroundColor: bl,
                 backgroundImage: const AssetImage("images/bag.png"),
               ))
         ],

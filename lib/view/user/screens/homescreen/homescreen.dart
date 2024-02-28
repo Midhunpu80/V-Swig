@@ -16,20 +16,80 @@ class homescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: gy.withOpacity(0.1),
+      appBar: AppBar(
+        title: all_text(
+            txt: "Welcome ", col: bl, siz: 18.sp, wei: FontWeight.bold, max: 1),
+        backgroundColor: wh,
+        actions: [
+          Padding(
+              padding: const EdgeInsets.all(2),
+              child: Container(
+                height: 3.h,
+                width: 12.w,
+                decoration: BoxDecoration(
+                  color: bl,
+                  image: const DecorationImage(
+                      image: AssetImage("images/bag.png")),
+                  borderRadius: BorderRadius.circular(1.h),
+                ),
+              )),
+          Padding(
+              padding: const EdgeInsets.all(2),
+              child: Container(
+                height: 3.h,
+                width: 12.w,
+                decoration: BoxDecoration(
+                  color: bl,
+                  image: const DecorationImage(
+                      image: AssetImage("images/bell.png")),
+                  borderRadius: BorderRadius.circular(1.h),
+                ),
+              ))
+        ],
+      ),
+      backgroundColor: wh,
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: 5.h,
+              height: 3.h,
             ),
             home_top_navbar(),
             SizedBox(
-              height: 3.h,
+              height: 1.h,
             ),
             home_carousal_slider(),
             SizedBox(
               height: 2.h,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 2.h),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: SizedBox(
+                  child: all_text(
+                      txt: "Keep Moving up",
+                      col: bl,
+                      siz: 21.sp,
+                      wei: FontWeight.bold,
+                      max: 1),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 2.h, right: 1.h),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: SizedBox(
+                  child: all_text(
+                      txt:
+                          "Learn the skills you need to take next step - and evry step after courses from 499 only",
+                      col: bl,
+                      siz: 13.sp,
+                      wei: FontWeight.w400,
+                      max: 3),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -64,6 +124,84 @@ class homescreen extends StatelessWidget {
                 children: [
                   all_text(
                       txt: "Popular Courses",
+                      col: bl,
+                      siz: 12.sp,
+                      wei: FontWeight.bold,
+                      max: 1),
+                  TextButton(
+                    onPressed: () {
+                      Get.to(() => popular_course_screen());
+                    },
+                    child: all_text(
+                        txt: "View all",
+                        col: blu,
+                        siz: 11.sp,
+                        wei: FontWeight.bold,
+                        max: 1),
+                  )
+                ],
+              ),
+            ),
+            home_popular_course(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  all_text(
+                      txt: "Web development Courses",
+                      col: bl,
+                      siz: 12.sp,
+                      wei: FontWeight.bold,
+                      max: 1),
+                  TextButton(
+                    onPressed: () {
+                      Get.to(() => popular_course_screen());
+                    },
+                    child: all_text(
+                        txt: "View all",
+                        col: blu,
+                        siz: 11.sp,
+                        wei: FontWeight.bold,
+                        max: 1),
+                  )
+                ],
+              ),
+            ),
+            home_popular_course(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  all_text(
+                      txt: "cooking Courses",
+                      col: bl,
+                      siz: 12.sp,
+                      wei: FontWeight.bold,
+                      max: 1),
+                  TextButton(
+                    onPressed: () {
+                      Get.to(() => popular_course_screen());
+                    },
+                    child: all_text(
+                        txt: "View all",
+                        col: blu,
+                        siz: 11.sp,
+                        wei: FontWeight.bold,
+                        max: 1),
+                  )
+                ],
+              ),
+            ),
+            home_popular_course(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  all_text(
+                      txt: "Boxing courses",
                       col: bl,
                       siz: 12.sp,
                       wei: FontWeight.bold,
