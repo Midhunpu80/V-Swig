@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
 import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
 import 'package:sizer/sizer.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: Scaffold(body: bottomnavigationbarscreen()));
+          home: Scaffold(body: browse_or_signinscreen()));
     });
   }
 }

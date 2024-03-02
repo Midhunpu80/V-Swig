@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:map_int/main.dart';
 import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/user/screens/profilescree/user_profilescreen.dart';
+import 'package:map_int/view/user/screens/search_screen/search_screen.dart';
 import 'package:map_int/view/utilities/colors.dart';
 
 class bottomnavigationbarscreen extends StatelessWidget {
   List allpages = [
-    homescreen(),
-    homescreen(),
-    homescreen(),
+    const homescreen(),
+    const search_screen(),
+    const homescreen(),
+    user_profile_screen(),
     user_profile_screen()
   ];
 
@@ -29,35 +31,38 @@ class bottomnavigationbarscreen extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 backgroundColor: wh,
-                icon: CircleAvatar(
-                  radius: 15,
-                  backgroundColor: bl,
-                  backgroundImage: const AssetImage('images/home.png'),
+                icon: Icon(
+                  Icons.home_filled,
+                  color: bl,
                 ),
                 label: "Home",
               ),
               BottomNavigationBarItem(
                   backgroundColor: wh,
-                  icon: CircleAvatar(
-                    radius: 15,
-                    backgroundColor: bl,
-                    backgroundImage: const AssetImage("images/loupe.png"),
+                  icon: Icon(
+                    Icons.search,
+                    color: bl,
                   ),
                   label: "Search"),
               BottomNavigationBarItem(
                   backgroundColor: wh,
-                  icon: CircleAvatar(
-                    radius: 15,
-                    backgroundColor: bl,
-                    backgroundImage: const AssetImage("images/subscribe.png"),
+                  icon: Icon(
+                    Icons.favorite,
+                    color: bl,
+                  ),
+                  label: "whishList"),
+              BottomNavigationBarItem(
+                  backgroundColor: wh,
+                  icon: Icon(
+                    Icons.subscriptions_rounded,
+                    color: bl,
                   ),
                   label: "Subscrptions"),
               BottomNavigationBarItem(
                   backgroundColor: wh,
-                  icon: CircleAvatar(
-                    radius: 15,
-                    backgroundColor: bl,
-                    backgroundImage: const AssetImage("images/user.png"),
+                  icon: Icon(
+                    Icons.person_2_rounded,
+                    color: bl,
                   ),
                   label: "Profile")
             ]),

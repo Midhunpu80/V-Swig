@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/view/user/screens/catogeryscreen.dart/catogery_screen.dart';
 import 'package:map_int/view/user/screens/popular_course_screen/popular_course_screen.dart';
+import 'package:map_int/view/user/screens/shopping_cart_screen/shopping_cart_screen.dart';
 import 'package:map_int/view/user/widgets/Home_top_nvabar.dart';
 import 'package:map_int/view/user/widgets/home_carousal_slider.dart';
 import 'package:map_int/view/user/widgets/home_catogeory.dart';
@@ -21,30 +22,40 @@ class homescreen extends StatelessWidget {
             txt: "Welcome ", col: bl, siz: 18.sp, wei: FontWeight.bold, max: 1),
         backgroundColor: wh,
         actions: [
-          Padding(
-              padding: const EdgeInsets.all(2),
-              child: Container(
-                height: 3.h,
-                width: 12.w,
-                decoration: BoxDecoration(
-                  color: bl,
-                  image: const DecorationImage(
-                      image: AssetImage("images/bag.png")),
-                  borderRadius: BorderRadius.circular(1.h),
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(2),
-              child: Container(
-                height: 3.h,
-                width: 12.w,
-                decoration: BoxDecoration(
-                  color: bl,
-                  image: const DecorationImage(
-                      image: AssetImage("images/bell.png")),
-                  borderRadius: BorderRadius.circular(1.h),
-                ),
-              ))
+          InkWell(
+            onTap: () {
+              Get.to(() => shopping_cart_screen());
+            },
+            child: Padding(
+                padding: const EdgeInsets.all(2),
+                child: Container(
+                  height: 3.h,
+                  width: 12.w,
+                  decoration: BoxDecoration(
+                    color: bl,
+                    image: const DecorationImage(
+                        image: AssetImage("images/bag.png")),
+                    borderRadius: BorderRadius.circular(1.h),
+                  ),
+                )),
+          ),
+          InkWell(
+            onTap: () {
+              //  Get.to(()=>)
+            },
+            child: Padding(
+                padding: const EdgeInsets.all(2),
+                child: Container(
+                  height: 3.h,
+                  width: 12.w,
+                  decoration: BoxDecoration(
+                    color: bl,
+                    image: const DecorationImage(
+                        image: AssetImage("images/bell.png")),
+                    borderRadius: BorderRadius.circular(1.h),
+                  ),
+                )),
+          )
         ],
       ),
       backgroundColor: wh,
