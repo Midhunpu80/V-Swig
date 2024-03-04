@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:map_int/view/user/screens/authentication/createaccount_with_email.dart';
 import 'package:map_int/view/user/screens/authentication/signupscreen.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:sizer/sizer.dart';
 
-class signupscreen extends StatelessWidget {
+class Login_or_signupscreen extends StatelessWidget {
+  const Login_or_signupscreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,7 @@ class signupscreen extends StatelessWidget {
             padding: EdgeInsets.only(left: 1.h),
             child: Container(
                 child: all_text(
-                    txt: "Create an account",
+                    txt: "Sign In",
                     col: bl,
                     siz: 17.sp,
                     wei: FontWeight.bold,
@@ -50,14 +51,14 @@ class signupscreen extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Get.to(() => create_account_with_email_screen());
+              print("gamil");
             },
             child: option_for_Login(
                 ico: Icon(
                   Icons.email,
                   color: bl,
                 ),
-                txt: "Sign up with Email"),
+                txt: "Sign In with Email"),
           ),
           GestureDetector(
               onTap: () {
@@ -67,7 +68,7 @@ class signupscreen extends StatelessWidget {
                   ico: const CircleAvatar(
                     backgroundImage: AssetImage("images/googles.png"),
                   ),
-                  txt: "Sign up with Google")),
+                  txt: "Sign In with Email")),
           SizedBox(
             height: 13.h,
           ),
@@ -77,15 +78,17 @@ class signupscreen extends StatelessWidget {
                 width: 11.h,
               ),
               all_text(
-                  txt: "Havent an account?",
+                  txt: "New here ?",
                   col: bl,
                   siz: 12.sp,
                   wei: FontWeight.bold,
                   max: 1),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => signupscreen());
+                  },
                   child: all_text(
-                      txt: "Sign In",
+                      txt: "Create an account",
                       col: pp,
                       siz: 12.sp,
                       wei: FontWeight.bold,

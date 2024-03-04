@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:map_int/view/user/screens/authentication/signupscreen.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'Login_or_singinscreen.dart';
 
 class browse_or_signinscreen extends StatelessWidget {
   final pagess = PageController();
@@ -21,7 +25,7 @@ class browse_or_signinscreen extends StatelessWidget {
           SizedBox(
             height: 4.h,
           ),
-          Container(
+          SizedBox(
             height: 80.h,
             width: 100.w,
             child: Stack(
@@ -50,7 +54,7 @@ class browse_or_signinscreen extends StatelessWidget {
                     }),
                 Positioned(
                   bottom: 25.h,
-                  child: Container(
+                  child: SizedBox(
                     height: 10.h,
                     width: 100.w,
                     child: Center(
@@ -92,7 +96,9 @@ class browse_or_signinscreen extends StatelessWidget {
                         wei: FontWeight.bold,
                         max: 1)),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() =>Login_or_signupscreen());
+                    },
                     child: all_text(
                         txt: "Sign In",
                         col: wh,
@@ -111,7 +117,7 @@ class browse_or_signinscreen extends StatelessWidget {
 additionnaltext({required var txt1, required var tx2}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Container(
+    child: SizedBox(
       height: 16.h,
       width: 100.w,
       child: Padding(
