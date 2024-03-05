@@ -17,12 +17,25 @@ class create_course extends StatelessWidget {
     return Scaffold(
       backgroundColor: wh,
       appBar: AppBar(
-        backgroundColor: wh,
-        leading: Icon(
-          Icons.menu,
-          color: bl,
-        ),
-      ),
+          toolbarHeight: 10.h,
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.save,
+                  color: bl,
+                ))
+          ],
+          backgroundColor: wh,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: bl,
+            ),
+          )),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -131,6 +144,42 @@ class create_course extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
+
+            // InkWell(
+            //     onTap: () {
+            //       Get.to(() => upload_videos_screen());
+            //     },
+            //     child: Padding(
+            //         padding: const EdgeInsets.all(8.0),
+            //         child: Container(
+            //           height: 8.h,
+            //           width: 77.w,
+            //           child: Center(
+            //             child: Row(
+            //               children: [
+            //                 SizedBox(
+            //                   width: 11.h,
+            //                 ),
+            //                 Icon(
+            //                   Icons.upload,
+            //                   color: wh,
+            //                 ),
+            //                 all_text(
+            //                     txt: "Upload Videos",
+            //                     col: wh,
+            //                     siz: 13.sp,
+            //                     wei: FontWeight.bold,
+            //                     max: 1),
+            //               ],
+            //             ),
+            //           ),
+            //           decoration: BoxDecoration(
+            //             color: bl,
+            //             border: Border.all(width: 1, color: bl),
+            //             borderRadius: BorderRadius.circular(1.h),
+            //           ),
+            //         )),
+            //   ),
           ],
         ),
       ),
