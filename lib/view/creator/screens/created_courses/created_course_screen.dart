@@ -44,7 +44,7 @@ class created_course_screen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.to(() => create_course());
+                  ///  Get.to(() => create_course());
                 },
                 icon: Icon(
                   Icons.more_vert,
@@ -77,7 +77,9 @@ class created_course_screen extends StatelessWidget {
                 children: [
                   ListTile(
                     trailing: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => const create_course());
+                        },
                         icon: Icon(
                           Icons.more_horiz_rounded,
                           color: bl,
