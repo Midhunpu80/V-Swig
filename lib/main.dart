@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_types_as_parameter_names, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';

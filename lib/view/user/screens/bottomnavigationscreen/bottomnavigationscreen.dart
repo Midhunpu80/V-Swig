@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
+import 'package:map_int/view/creator/screens/create_course/create_course.dart';
 import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/user/screens/profilescree/user_profilescreen.dart';
 import 'package:map_int/view/user/screens/search_screen/search_screen.dart';
@@ -11,7 +12,7 @@ class bottomnavigationbarscreen extends StatelessWidget {
     const homescreen(),
     const search_screen(),
     const homescreen(),
-    user_profile_screen(),
+create_course(),
     user_profile_screen()
   ];
 

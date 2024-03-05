@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/view/user/screens/authentication/signupscreen.dart';
+import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
@@ -88,7 +89,9 @@ class browse_or_signinscreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => bottomnavigationbarscreen());
+                    },
                     child: all_text(
                         txt: "Browse",
                         col: wh,
@@ -97,7 +100,7 @@ class browse_or_signinscreen extends StatelessWidget {
                         max: 1)),
                 TextButton(
                     onPressed: () {
-                      Get.to(() =>Login_or_signupscreen());
+                      Get.to(() => Login_or_signupscreen());
                     },
                     child: all_text(
                         txt: "Sign In",
