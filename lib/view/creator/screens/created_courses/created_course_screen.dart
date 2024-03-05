@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/view/creator/screens/create_course/create_course.dart';
@@ -12,19 +14,19 @@ class created_course_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: Container(
+        floatingActionButton: SizedBox(
           width: 40.w,
           height: 7.h,
           child: FloatingActionButton(
             onPressed: () {
-              Get.to(() => create_course());
+              Get.to(() => const create_course());
             },
             child: Row(
               children: [
                 SizedBox(
                   width: 4.w,
                 ),
-                Icon(
+                const Icon(
                   Icons.add,
                 ),
                 all_text(
@@ -41,7 +43,9 @@ class created_course_screen extends StatelessWidget {
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => create_course());
+                },
                 icon: Icon(
                   Icons.more_vert,
                   color: bl,
@@ -72,6 +76,12 @@ class created_course_screen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
+                    trailing: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.more_horiz_rounded,
+                          color: bl,
+                        )),
                     leading: Container(
                       height: 20.h,
                       width: 14.w,
