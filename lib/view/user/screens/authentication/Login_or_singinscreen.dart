@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:map_int/view/user/screens/authentication/Loginscreen.dart';
 import 'package:map_int/view/user/screens/authentication/signupscreen.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
@@ -51,7 +52,7 @@ class Login_or_signupscreen extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print("gamil");
+              Get.to(() => Loginscreen());
             },
             child: option_for_Login(
                 ico: Icon(
@@ -126,3 +127,6 @@ option_for_Login({required dynamic ico, required var txt}) {
     ),
   );
 }
+////PUTHIYA BUILDINGNU ULLAHTH ///
+///
+///WW\ARD

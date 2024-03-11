@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "602192322835",
+    "project_id": "v-swig",
+    "storage_bucket": "v-swig.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602192322835:android:563029fb5bd78440f2bae6",
+        "android_client_info": {
+          "package_name": "com.example.map_int"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiLzy7BrViWRAlbpW6l4U2ZwxMEJW37fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

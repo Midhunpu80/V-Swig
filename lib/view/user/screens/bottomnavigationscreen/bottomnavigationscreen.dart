@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
-import 'package:map_int/view/creator/screens/create_course/create_course.dart';
-import 'package:map_int/view/creator/screens/created_courses/created_course_screen.dart';
+
 import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/user/screens/profilescree/user_profilescreen.dart';
 import 'package:map_int/view/user/screens/search_screen/search_screen.dart';
+import 'package:map_int/view/user/screens/view_course_details/view_details_course_screen.dart';
 import 'package:map_int/view/utilities/colors.dart';
+import 'package:map_int/view_model/userdata_controller/userDate_controller%20.dart';
 
 class bottomnavigationbarscreen extends StatelessWidget {
+  final userdatasz = Get.put(user_data_controller());
+
+  /// dynamic daaata = type==true?
+
   List allpages = [
-    const homescreen(),
-    const search_screen(),
-    const homescreen(),
-created_course_screen(),
+    homescreen(),
+    // ignore: prefer_const_constructors
+    search_screen(),
+    homescreen(),
+    // ignore: unrelated_type_equality_checks
+    Obx(() => userdatasz_controll.types.value == true
+        ?  homescreen()
+        : view_course_details_screen()),
     user_profile_screen()
   ];
 
@@ -21,10 +30,18 @@ created_course_screen(),
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: () {}),
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: page_controll.pageno.value,
             onTap: (val) {
               page_controll.change(val);
+              if (val == 3) {
+                if (userdatasz.types.value == true) {
+                  homescreen();
+                } else {
+                  view_course_details_screen();
+                }
+              }
             },
             selectedItemColor: bl,
             unselectedItemColor: gy,
