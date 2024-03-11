@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:map_int/main.dart';
 import 'package:map_int/view/creator/screens/upload_video_screen/upload_videos_screen.dart';
 import 'package:map_int/view/user/widgets/descritption.dart';
 import 'package:map_int/view/user/widgets/textform_filed.dart';
@@ -46,20 +47,35 @@ class create_course extends StatelessWidget {
                 wei: FontWeight.bold,
                 max: 1),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                image_controller.pickimages();
+                print("clecked");
+              },
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 20.h,
-                    width: 80.w,
-                    child: Icon(
-                      Icons.image,
-                      size: 6.h,
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.h),
-                        color: bl.withOpacity(0.2)),
-                  )),
+                  child: Obx(() => image_controller.img.value == null
+                      ? Container(
+                          height: 20.h,
+                          width: 80.w,
+                          child: Icon(
+                            Icons.image,
+                            size: 6.h,
+                          ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.h),
+                              color: bl.withOpacity(0.2)),
+                        )
+                      : Container(
+                          height: 20.h,
+                          width: 80.w,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      MemoryImage(image_controller.img.value!),
+                                  fit: BoxFit.cover),
+                              borderRadius: BorderRadius.circular(2.h),
+                              color: bl.withOpacity(0.2)),
+                        ))),
             ),
             Padding(
                 padding: const EdgeInsets.all(10),
@@ -87,7 +103,7 @@ class create_course extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.to(() => upload_videos_screen());
+                    Get.back();
                   },
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -101,11 +117,11 @@ class create_course extends StatelessWidget {
                                 width: 11.h,
                               ),
                               Icon(
-                                Icons.upload,
+                                Icons.folder,
                                 color: wh,
                               ),
                               all_text(
-                                  txt: "Upload Videos",
+                                  txt: "Create Course",
                                   col: wh,
                                   siz: 13.sp,
                                   wei: FontWeight.bold,
@@ -121,7 +137,9 @@ class create_course extends StatelessWidget {
                       )),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => upload_videos_screen());
+                  },
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(

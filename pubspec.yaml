@@ -57,9 +57,6 @@ dependencies:
   readmore: ^2.2.0
   firebase_core: ^2.16.0
   cloud_firestore: ^4.9.2
-  
-  
-
   smooth_page_indicator: ^1.1.0
  
   flutter_rating_stars: ^1.0.3+4

@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:map_int/main.dart';
 import 'package:map_int/view/creator/screens/uploaded_videos.dart/uploaded_videos_screen.dart';
 import 'package:map_int/view/user/widgets/textform_filed.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
+import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:video_player/video_player.dart';
 
 class upload_videos_screen extends StatelessWidget {
   @override
@@ -37,24 +40,77 @@ class upload_videos_screen extends StatelessWidget {
           child: Column(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  image_controller.pickMedia();
+                },
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 20.h,
-                      width: 80.w,
-                      decoration: BoxDecoration(
-                        color: bl,
-                        border: Border.all(width: 1, color: bl),
-                        borderRadius: BorderRadius.circular(1.h),
-                      ),
-                    )),
+                    child: Obx(() => image_controller.media.value == null
+                        ? Container(
+                            height: 20.h,
+                            width: 80.w,
+                            decoration: BoxDecoration(
+                              color: bl,
+                              border: Border.all(width: 1, color: bl),
+                              borderRadius: BorderRadius.circular(1.h),
+                            ),
+                          )
+                        : AspectRatio(
+                          
+                            aspectRatio: 0.9,
+                            child: VideoPlayer(
+                            
+                                image_controller.videoPlayerController)))),
+              ),
+              CircleAvatar(
+                child: IconButton(
+                    onPressed: () {
+                      image_controller.playtoggele();
+                    },
+                    icon: Obx(() => image_controller.isPlaying.value
+                        ? Icon(Icons.pause)
+                        : Icon(Icons.play_arrow))),
               ),
               textformfield_reause(hint: "Video Title", label: "Video Title"),
               textformfield_reause(
                   hint: "Video SubTitile", label: "Video Subtitle"),
               SizedBox(
                 height: 5.h,
+              ),
+              InkWell(
+                onTap: () {
+                  image_controller.pickMedia();
+                },
+                child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 6.h,
+                      width: 80.w,
+                      child: Center(
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 15.h,
+                            ),
+                            Icon(
+                              Icons.add,
+                              color: wh,
+                            ),
+                            all_text(
+                                txt: "Pick video",
+                                col: wh,
+                                siz: 13.sp,
+                                wei: FontWeight.bold,
+                                max: 1),
+                          ],
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: bl,
+                        border: Border.all(width: 1, color: bl),
+                        borderRadius: BorderRadius.circular(1.h),
+                      ),
+                    )),
               ),
               InkWell(
                 onTap: () {},
@@ -125,7 +181,6 @@ class upload_videos_screen extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Get.to(() => uploaded_video_screen());
-                  
                 },
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
