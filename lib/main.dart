@@ -49,21 +49,3 @@ class MyApp extends StatelessWidget {
     });
   }
 }
-
-// StreamBuilder(
-//               stream: FirebaseAuth.instance.authStateChanges(),
-//               builder: (context, snapshot) {
-//                 return Scaffold(
-//                     body: snapshot.hasData
-//                         ? bottomnavscreen()
-//                         : const log_or_reg_screen());
-//               })
-
-// StreamBuilder(
-//           stream: FirebaseFirestore.instance
-//               .collection('users')
-//               .where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
-//               .snapshots(),
-//           builder: (context, snapshots) {
-//             print("${snapshots.data?.docs[1]["Name"]}");
-//             return !snapshot.hasData?SizedBox():

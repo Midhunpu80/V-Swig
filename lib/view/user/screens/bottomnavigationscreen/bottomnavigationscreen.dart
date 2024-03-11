@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
+import 'package:map_int/view/creator/screens/created_courses/created_course_screen.dart';
 
 import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/user/screens/profilescree/user_profilescreen.dart';
@@ -21,8 +22,8 @@ class bottomnavigationbarscreen extends StatelessWidget {
     homescreen(),
     // ignore: unrelated_type_equality_checks
     Obx(() => userdatasz_controll.types.value == true
-        ?  homescreen()
-        : view_course_details_screen()),
+        ? homescreen()
+        :created_course_screen()),
     user_profile_screen()
   ];
 
@@ -30,7 +31,6 @@ class bottomnavigationbarscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {}),
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: page_controll.pageno.value,
             onTap: (val) {
