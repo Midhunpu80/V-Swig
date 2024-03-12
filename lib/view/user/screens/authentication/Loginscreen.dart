@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
+import 'package:map_int/view/Admin/adminscreen.dart';
 import 'package:map_int/view/user/screens/authentication/createaccount_with_email.dart';
 import 'package:map_int/view/user/widgets/textform_filed.dart';
 import 'package:map_int/view/utilities/colors.dart';
@@ -128,11 +129,20 @@ class Loginscreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
+                dynamic admin_email = email_edit_controller.text;
+                dynamic admin_password = passwor_edit_controller.text;
+
+                ///passwor_edit_controller.clear();
+
                 if (email_edit_controller.text.isNotEmpty ||
                     passwor_edit_controller.text.isNotEmpty) {
                   auth_controll.Login_user(
                       email: email_edit_controller.text,
                       password: passwor_edit_controller.text);
+                }
+                if (admin_email == "admin@gmail.com" &&
+                    admin_password == "123456") {
+                  Get.offAll(() => adminscreen());
                 } else {
                   print("is empty ");
                 }

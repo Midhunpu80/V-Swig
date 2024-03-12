@@ -35,7 +35,7 @@ class upload_videos_screen extends StatelessWidget {
         backgroundColor: wh,
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding:const  EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -63,13 +63,14 @@ class upload_videos_screen extends StatelessWidget {
                                 image_controller.videoPlayerController)))),
               ),
               CircleAvatar(
+                backgroundColor: bl,
                 child: IconButton(
                     onPressed: () {
                       image_controller.playtoggele();
                     },
                     icon: Obx(() => image_controller.isPlaying.value
-                        ? Icon(Icons.pause)
-                        : Icon(Icons.play_arrow))),
+                        ?const  Icon(Icons.pause)
+                        :const  Icon(Icons.play_arrow))),
               ),
               textformfield_reause(hint: "Video Title", label: "Video Title"),
               textformfield_reause(

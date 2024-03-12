@@ -138,7 +138,10 @@ class user_profile_screen extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              auth_controll.logout();
+                              
+                            },
                             child: all_text(
                                 txt: "sign out",
                                 col: pp,
