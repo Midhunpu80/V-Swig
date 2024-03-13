@@ -1,10 +1,11 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, camel_case_types, unused_local_variable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
+import 'package:map_int/view/Admin/adminscreen.dart';
 import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
 import 'package:map_int/view_model/userdata_controller/userDate_controller%20.dart';
@@ -56,6 +57,10 @@ class authentication_service extends GetxController {
 
       if (user != null) {
         Get.offAll(() => bottomnavigationbarscreen());
+      }
+      if (auth.currentUser?.uid.toString() ==
+          "xJWFdar1NBXu81sLWMmh8ZeIevX2".toString()) {
+        Get.offAll(() => adminscreen());
       } else {
         // ignore: avoid_print
         print("failed");

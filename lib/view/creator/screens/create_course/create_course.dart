@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
@@ -99,6 +100,62 @@ class create_course extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
+            StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('catogery')
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  final snap = snapshot.data!.docs;
+              
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 90.w,
+                      height: 10.h,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 1, color: bl)),
+                      child: !snapshot.hasData
+                          ?const  Center(
+                              child: LinearProgressIndicator(),
+                            )
+                          : DropdownButton(
+                            dropdownColor: wh,
+                            value: snap[0]['Name'].toString(),
+                           
+                            itemHeight: 10.h,
+                            icon: Icon(Icons.arrow_drop_down_circle_rounded,color: bl,),
+                             // value: "selecr",
+                              iconSize: 5.h,
+                              items: List.generate(
+                                
+                                  snap.length,
+                                  (index) => DropdownMenuItem<dynamic>(
+                                    
+                                      value: snap[index]['Name'].toString(),
+                                      
+                                        child: Container(
+                                          color: wh,
+                                          height: 5.h,width:70.w,
+                                          child: ListTile(
+                                            leading: CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                  snap[index]['image']),
+                                            ),
+                                            title: all_text(
+                                                txt: snap[index]['Name'].toString(),
+                                                col: bl,
+                                                siz: 11.sp,
+                                                wei: FontWeight.bold,
+                                                max: 1),
+                                          ),
+                                        ),
+                                      )).toList(),
+                              onChanged: (val) {
+                                print("val");
+                              }),
+                  )
+                  );
+                }),
             Row(
               children: [
                 InkWell(
@@ -162,42 +219,6 @@ class create_course extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
-
-            // InkWell(
-            //     onTap: () {
-            //       Get.to(() => upload_videos_screen());
-            //     },
-            //     child: Padding(
-            //         padding: const EdgeInsets.all(8.0),
-            //         child: Container(
-            //           height: 8.h,
-            //           width: 77.w,
-            //           child: Center(
-            //             child: Row(
-            //               children: [
-            //                 SizedBox(
-            //                   width: 11.h,
-            //                 ),
-            //                 Icon(
-            //                   Icons.upload,
-            //                   color: wh,
-            //                 ),
-            //                 all_text(
-            //                     txt: "Upload Videos",
-            //                     col: wh,
-            //                     siz: 13.sp,
-            //                     wei: FontWeight.bold,
-            //                     max: 1),
-            //               ],
-            //             ),
-            //           ),
-            //           decoration: BoxDecoration(
-            //             color: bl,
-            //             border: Border.all(width: 1, color: bl),
-            //             borderRadius: BorderRadius.circular(1.h),
-            //           ),
-            //         )),
-            //   ),
           ],
         ),
       ),

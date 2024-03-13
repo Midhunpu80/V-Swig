@@ -58,60 +58,7 @@ class Loginscreen extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
-            // Row(
-            //   children: [
-            //     Obx(
-            //       () => Expanded(
-            //         child: ListTile(
-            //           title: all_text(
-            //               txt: "Creator",
-            //               col: bl,
-            //               siz: 12.sp,
-            //               wei: FontWeight.w600,
-            //               max: 2),
-            //           leading: Radio<int>(
-            //             value: 1,
-            //             groupValue: mode_controll.mode.value,
-            //             activeColor: Colors
-            //                 .red, // Change the active radio button color here
-            //             fillColor: MaterialStateProperty.all(
-            //                 Colors.red), // Change the fill color when selected
-            //             splashRadius:
-            //                 20, // Change the splash radius when clicked
-            //             onChanged: (int? value) {
-            //               mode_controll.changemode(index: value);
-            //             },
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Obx(
-            //       () => Expanded(
-            //         child: ListTile(
-            //           title: all_text(
-            //               txt: "Student",
-            //               col: bl,
-            //               siz: 12.sp,
-            //               wei: FontWeight.w600,
-            //               max: 2),
-            //           leading: Radio<int>(
-            //             value: 2,
-            //             groupValue: mode_controll.mode.value,
-            //             activeColor: Colors
-            //                 .red, // Change the active radio button color here
-            //             fillColor: MaterialStateProperty.all(
-            //                 Colors.red), // Change the fill color when selected
-            //             splashRadius:
-            //                 20, // Change the splash radius when clicked
-            //             onChanged: (int? value) {
-            //               mode_controll.changemode(index: value);
-            //             },
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
+           
             Padding(
                 padding: EdgeInsets.only(left: 4.h, right: 2.h, top: 1.h),
                 child: textformfield_reause(
@@ -140,10 +87,7 @@ class Loginscreen extends StatelessWidget {
                       email: email_edit_controller.text,
                       password: passwor_edit_controller.text);
                 }
-                if (admin_email == "admin@gmail.com" &&
-                    admin_password == "123456") {
-                  Get.offAll(() => adminscreen());
-                } else {
+                else {
                   print("is empty ");
                 }
               },

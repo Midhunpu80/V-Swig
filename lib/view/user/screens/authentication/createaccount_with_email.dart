@@ -147,7 +147,10 @@ class create_account_with_email_screen extends StatelessWidget {
                           name: name_edit_controller.text.toString())
                       .then((value) => Get.to(() => Loginscreen()));
                   print(email_edit_controller.text.toString());
-                } else {
+                }
+                
+                
+                 else {
                   print("prifnn");
                 }
               },

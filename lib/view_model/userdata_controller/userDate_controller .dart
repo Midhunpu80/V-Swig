@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 var type;
+var adminemail;
 
 class user_data_controller extends GetxController {
   var userData = <DocumentSnapshot<Map<String, dynamic>>>[].obs;
   var types = false.obs;
+  
 
   @override
   void onInit() {
@@ -18,6 +20,8 @@ class user_data_controller extends GetxController {
         await FirebaseFirestore.instance.collection('users').get();
 
     userData.assignAll(querySnapshot.docs);
+    adminemail = userData[0]["email"];
+
     print("${userData[0]["Name"]}");
 
     print(type.toString());

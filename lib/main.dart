@@ -2,10 +2,14 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:map_int/view/resource/storage.dart';
 import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
+import 'package:map_int/view/user/service/admin_catogery_service.dart';
 import 'package:map_int/view/user/service/authentication_service.dart';
 import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
 import 'package:map_int/view_model/mode_controller/mode_controller.dart';
@@ -25,6 +29,9 @@ final page_controll = Get.put(pagecontroller());
 final mode_controll = Get.put(mode_controller());
 final userdatasz_controll = Get.put(user_data_controller());
 final image_controller = Get.put(image_picker_controller());
+firbasestorage firestore_controll = firbasestorage();
+final admin_controll = Get.put(admin_catogery_service());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
