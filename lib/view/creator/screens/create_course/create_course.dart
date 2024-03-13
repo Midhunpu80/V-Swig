@@ -161,7 +161,16 @@ class create_course extends StatelessWidget {
                                             )).toList(),
                                     onChanged: (val) {
                                       dropdown_controll.change(newvalue: val);
-                                      print("val");
+                                      ///////////////////////this code using to get id number of every items //////////////////////////////////
+                                      String selectedId = snap
+                                          .firstWhere(
+                                            (element) =>
+                                                element['Name'].toString() ==
+                                                val,
+                                          )['cat_id']
+                                          .toString();
+                                      print("${selectedId.toString()}");
+                                      print("val${val}");
                                     }),
                               ),
                       ));
