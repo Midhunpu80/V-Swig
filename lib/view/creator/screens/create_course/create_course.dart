@@ -106,55 +106,65 @@ class create_course extends StatelessWidget {
                     .snapshots(),
                 builder: (context, snapshot) {
                   final snap = snapshot.data!.docs;
-              
+
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      width: 90.w,
-                      height: 10.h,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: bl)),
-                      child: !snapshot.hasData
-                          ?const  Center(
-                              child: LinearProgressIndicator(),
-                            )
-                          : DropdownButton(
-                            dropdownColor: wh,
-                            value: snap[0]['Name'].toString(),
-                           
-                            itemHeight: 10.h,
-                            icon: Icon(Icons.arrow_drop_down_circle_rounded,color: bl,),
-                             // value: "selecr",
-                              iconSize: 5.h,
-                              items: List.generate(
-                                
-                                  snap.length,
-                                  (index) => DropdownMenuItem<dynamic>(
-                                    
-                                      value: snap[index]['Name'].toString(),
-                                      
-                                        child: Container(
-                                          color: wh,
-                                          height: 5.h,width:70.w,
-                                          child: ListTile(
-                                            leading: CircleAvatar(
-                                              backgroundImage: NetworkImage(
-                                                  snap[index]['image']),
-                                            ),
-                                            title: all_text(
-                                                txt: snap[index]['Name'].toString(),
-                                                col: bl,
-                                                siz: 11.sp,
-                                                wei: FontWeight.bold,
-                                                max: 1),
-                                          ),
-                                        ),
-                                      )).toList(),
-                              onChanged: (val) {
-                                print("val");
-                              }),
-                  )
-                  );
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 90.w,
+                        height: 10.h,
+                        decoration: const BoxDecoration(
+                            // border: Border.all(width: 1, color: bl)),
+                            ),
+                        child: !snapshot.hasData
+                            ? const Center(
+                                child: LinearProgressIndicator(),
+                              )
+                            : Obx(
+                                () => DropdownButton(
+                                    dropdownColor: wh,
+                                    value: dropdown_controll.changedvalue.value
+                                            .toString()
+                                            .isEmpty
+                                        ? snap[0]['Name']
+                                        : dropdown_controll.changedvalue.value,
+                                    itemHeight: 10.h,
+                                    icon: Icon(
+                                      Icons.arrow_drop_down_circle_rounded,
+                                      color: bl,
+                                    ),
+                                    // value: "selecr",
+                                    iconSize: 5.h,
+                                    items: List.generate(
+                                        snap.length,
+                                        (index) => DropdownMenuItem<dynamic>(
+                                              value: snap[index]['Name']
+                                                  .toString(),
+                                              child: Container(
+                                                color: wh,
+                                                height: 5.h,
+                                                width: 70.w,
+                                                child: ListTile(
+                                                  leading: CircleAvatar(
+                                                    backgroundImage:
+                                                        NetworkImage(snap[index]
+                                                            ['image']),
+                                                  ),
+                                                  title: all_text(
+                                                      txt: snap[index]['Name']
+                                                          .toString(),
+                                                      col: bl,
+                                                      siz: 11.sp,
+                                                      wei: FontWeight.bold,
+                                                      max: 1),
+                                                ),
+                                              ),
+                                            )).toList(),
+                                    onChanged: (val) {
+                                      dropdown_controll.change(newvalue: val);
+                                      print("val");
+                                    }),
+                              ),
+                      ));
                 }),
             Row(
               children: [

@@ -11,6 +11,7 @@ import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
 import 'package:map_int/view/user/service/admin_catogery_service.dart';
 import 'package:map_int/view/user/service/authentication_service.dart';
+import 'package:map_int/view_model/dropdown_controller/dropdown_controller.dart';
 import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
 import 'package:map_int/view_model/mode_controller/mode_controller.dart';
 import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
@@ -31,6 +32,7 @@ final userdatasz_controll = Get.put(user_data_controller());
 final image_controller = Get.put(image_picker_controller());
 firbasestorage firestore_controll = firbasestorage();
 final admin_controll = Get.put(admin_catogery_service());
+final dropdown_controll = Get.put(dropdown_controller());
 
 
 class MyApp extends StatelessWidget {
