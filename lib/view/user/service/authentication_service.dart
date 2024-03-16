@@ -94,14 +94,14 @@ class authentication_service extends GetxController {
       FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
-          .update({"newtype": false});
+          .update({"newtype": false, "type": "user"});
       userdatasz_controll.fetchData();
     } else {
       /////type == false means its instructor type///
       FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
-          .update({"newtype": true});
+          .update({"newtype": true, "type": "Instructor"});
       userdatasz_controll.fetchData();
     }
   }

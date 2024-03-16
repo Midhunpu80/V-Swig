@@ -106,7 +106,7 @@ class user_profile_screen extends StatelessWidget {
                               userdatasz_controll.fetchData();
                             },
                             child: Obx(() => all_text(
-                                txt: userdatasz_controll.types == true
+                                txt: userdatasz_controll.types.value== true
                                     ? "Switch to Instructor"
                                     : "Switch to Student",
                                 col: pp,
