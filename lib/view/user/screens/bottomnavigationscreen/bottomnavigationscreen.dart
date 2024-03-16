@@ -23,7 +23,7 @@ class bottomnavigationbarscreen extends StatelessWidget {
     // ignore: unrelated_type_equality_checks
     Obx(() => userdatasz_controll.types.value == true
         ? homescreen()
-        :created_course_screen()),
+        :my_course_screen()),
     user_profile_screen()
   ];
 
