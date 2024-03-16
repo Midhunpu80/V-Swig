@@ -2,10 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:map_int/view/resource/storage.dart';
 import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
