@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/view/creator/screens/create_course/create_course.dart';
+import 'package:map_int/view/creator/screens/upload_video_screen/upload_videos_screen.dart';
 import 'package:map_int/view/user/widgets/starrating.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
@@ -81,7 +82,7 @@ class my_course_screen extends StatelessWidget {
               ),
               // ignore: prefer_const_constructors
               body: !snapshot.hasData
-                  ? Center(
+                  ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : ListView.separated(
@@ -92,7 +93,10 @@ class my_course_screen extends StatelessWidget {
                             ListTile(
                               trailing: IconButton(
                                   onPressed: () {
-                                    Get.to(() => create_course());
+                                    Get.to(() => upload_videos_screen(
+                                          course_id: snap?[index]['course_id'],
+                                        ));
+                                    print(snap?[index]['course_id'].toString());
                                   },
                                   icon: Icon(
                                     Icons.more_horiz_rounded,

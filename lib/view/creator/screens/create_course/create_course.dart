@@ -266,7 +266,11 @@ class create_course extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.to(() => upload_videos_screen());
+                          Get.to(() => upload_videos_screen(
+                                course_id: snapss?['course_id'].toString(),
+                              ));
+                          print( snapss?['course_id'].toString(),
+                          );
                         },
                         child: Padding(
                             padding: const EdgeInsets.all(8.0),

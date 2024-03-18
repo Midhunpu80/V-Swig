@@ -14,6 +14,7 @@ import 'package:map_int/view_model/dropdown_controller/dropdown_controller.dart'
 import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
 import 'package:map_int/view_model/mode_controller/mode_controller.dart';
 import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
+import 'package:map_int/view_model/upload_video_controller.dart/upload_video_controller.dart';
 import 'package:map_int/view_model/userdata_controller/userDate_controller%20.dart';
 import 'package:sizer/sizer.dart';
 
@@ -33,6 +34,7 @@ firbasestorage firestore_controll = firbasestorage();
 final admin_controll = Get.put(admin_catogery_service());
 final dropdown_controll = Get.put(dropdown_controller());
 final course_controll = create_course_servie();
+final video_upload_controll = uploadvideo_controller();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

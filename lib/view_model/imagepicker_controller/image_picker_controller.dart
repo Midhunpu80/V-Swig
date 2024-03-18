@@ -1,11 +1,17 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
-import 'dart:io' as io;
 
 class image_picker_controller extends GetxController {
   Rx<Uint8List?> img = Rx<Uint8List?>(null);
+  var video_url = "".obs;
+
+
   Rx<String?> media = Rx<String?>(null);
   late VideoPlayerController videoPlayerController;
   var isPlaying = true.obs;
@@ -24,26 +30,34 @@ class image_picker_controller extends GetxController {
 
   ///pickvideo() {}
   pickMedia() async {
-    XFile? mediaFile =
-        await ImagePicker().pickVideo(source: ImageSource.gallery);
-    if (mediaFile != null) {
-      final String path = await saveVideoToTempDirectory(mediaFile);
-      media.value = path;
-      videoPlayerController = VideoPlayerController.file(io.File(path));
-      videoPlayerController.initialize().then((_) {
-        videoPlayerController.play();
-        update();
-      });
+    XFile? videoFile;
+    try {
+      videoFile = await ImagePicker().pickVideo(source: ImageSource.gallery);
+      if (videoFile != null) {
+        video_url.value = videoFile.path;
+        initalizevideo();
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 
-  Future<String> saveVideoToTempDirectory(XFile mediaFile) async {
-    final io.Directory systemTempDir = io.Directory.systemTemp;
-    final io.File file = io.File(
-        '${systemTempDir.path}/${DateTime.now().millisecondsSinceEpoch}.mp4');
-    await file.writeAsBytes(await mediaFile.readAsBytes());
-    return file.path;
+
+  initalizevideo() {
+      if (video_url.value.isNotEmpty) { // Check if video_url is not empty
+    videoPlayerController = VideoPlayerController.file(File(video_url.value))
+      ..initialize().then((_) {
+        update();
+        videoPlayerController.play();
+        update();
+      });
+  } else {
+    print("Video URL is empty or null");
   }
+
+  }
+
+
 
   playtoggele() {
     if (isPlaying.value) {
@@ -52,22 +66,19 @@ class image_picker_controller extends GetxController {
       videoPlayerController.play();
     }
     isPlaying.toggle();
-    
   }
 
   @override
   void onInit() {
-    if (media.value != null) {
-      videoPlayerController = VideoPlayerController.file(io.File(media.value!));
-      videoPlayerController.initialize().then((value) => update());
-    }
+    pickMedia();
     super.onInit();
   }
 
   @override
   void dispose() {
+ if (videoPlayerController != null) { // Check if videoPlayerController is not null
     videoPlayerController.dispose();
-
+  }
     super.dispose();
   }
 }
