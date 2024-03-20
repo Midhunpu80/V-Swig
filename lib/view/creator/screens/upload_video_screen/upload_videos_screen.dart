@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,13 +7,14 @@ import 'package:map_int/view/creator/screens/uploaded_videos.dart/uploaded_video
 import 'package:map_int/view/user/widgets/textform_filed.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
-import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_player/video_player.dart';
 
 class upload_videos_screen extends StatelessWidget {
   String? course_id;
-  upload_videos_screen({required this.course_id});
+  String? url;
+
+  upload_videos_screen({required this.course_id, required this.url});
 
   final title_conttroller = TextEditingController();
   final subtitle_controller = TextEditingController();
@@ -115,184 +116,190 @@ class upload_videos_screen extends StatelessWidget {
               //           ),
               //         ),
               // ),
-              Obx(()=> video_upload_controll.isLoading.value?Column(
-                children: [
-                Container(
-                  height: 10.h,width: 20.w,
-                    //aspectRatio: 5,
-                    child: CircularProgressIndicator(
-                      
-                      strokeWidth: 3.h,
-                    
-                      
-                      backgroundColor: gy,
-                      color: gr,
-                      value:video_upload_controll.progress / 100 ,),
-                  ),
-                  SizedBox(height: 2.h,),
-                   all_text(
-                                txt: "${video_upload_controll.progress.value.toStringAsFixed(2)}",
-                                col: bl,
-                                siz: 12.sp,
-                                wei: FontWeight.bold,
-                                max: 1),
-                                SizedBox(height: 3.h,),
-                ],
-              ):
-                Container(child :Column(children: [
-                  InkWell(
-                  onTap: () {
-                    image_controller.pickMedia();
-                  },
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 6.h,
-                        width: 80.w,
-                        child: Center(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 15.h,
-                              ),
-                              Icon(
-                                Icons.add,
-                                color: wh,
-                              ),
-                              all_text(
-                                  txt: "Pick video",
-                                  col: wh,
-                                  siz: 13.sp,
-                                  wei: FontWeight.bold,
-                                  max: 1),
-                            ],
+              Obx(
+                () => video_upload_controll.isLoading.value
+                    ? Column(
+                        children: [
+                          Container(
+                            height: 10.h, width: 20.w,
+                            //aspectRatio: 5,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3.h,
+                              backgroundColor: gy,
+                              color: gr,
+                              value: video_upload_controll.progress / 100,
+                            ),
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: bl,
-                          border: Border.all(width: 1, color: bl),
-                          borderRadius: BorderRadius.circular(1.h),
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 6.h,
-                        width: 80.w,
-                        child: Center(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 11.h,
-                              ),
-                              Icon(
-                                Icons.upload,
-                                color: wh,
-                              ),
-                              all_text(
-                                  txt: "Upload Videos",
-                                  col: wh,
-                                  siz: 13.sp,
-                                  wei: FontWeight.bold,
-                                  max: 1),
-                            ],
+                          SizedBox(
+                            height: 2.h,
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: bl,
-                          border: Border.all(width: 1, color: bl),
-                          borderRadius: BorderRadius.circular(1.h),
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    print(image_controller.video_url.value.toString());
-                    video_upload_controll.uploadvideos_courses(
-                        course_id: course_id,
-                        videoFile: image_controller.video_url.value,
-                        title: title_conttroller.text.toString(),
-                        subtitle: subtitle_controller.text.toString());
-                  },
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 6.h,
-                        width: 80.w,
-                        child: Center(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 15.h,
-                              ),
-                              Icon(
-                                Icons.save,
-                                color: wh,
-                              ),
-                              all_text(
-                                  txt: "Save",
-                                  col: wh,
-                                  siz: 13.sp,
-                                  wei: FontWeight.bold,
-                                  max: 1),
-                            ],
+                          all_text(
+                              txt:
+                                  "${video_upload_controll.progress.value.toStringAsFixed(2)}",
+                              col: bl,
+                              siz: 12.sp,
+                              wei: FontWeight.bold,
+                              max: 1),
+                          SizedBox(
+                            height: 3.h,
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: bl,
-                          border: Border.all(width: 1, color: bl),
-                          borderRadius: BorderRadius.circular(1.h),
-                        ),
-                      )),
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.to(() => uploaded_video_screen());
-                  },
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 6.h,
-                        width: 80.w,
-                        child: Center(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 11.h,
-                              ),
-                              Icon(
-                                Icons.video_library_sharp,
-                                color: wh,
-                              ),
-                              all_text(
-                                  txt: "Uploaded Videos",
-                                  col: wh,
-                                  siz: 13.sp,
-                                  wei: FontWeight.bold,
-                                  max: 1),
-                            ],
+                        ],
+                      )
+                    : Container(
+                        child: Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              image_controller.pickMedia();
+                            },
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 6.h,
+                                  width: 80.w,
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 15.h,
+                                        ),
+                                        Icon(
+                                          Icons.add,
+                                          color: wh,
+                                        ),
+                                        all_text(
+                                            txt: "Pick video",
+                                            col: wh,
+                                            siz: 13.sp,
+                                            wei: FontWeight.bold,
+                                            max: 1),
+                                      ],
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: bl,
+                                    border: Border.all(width: 1, color: bl),
+                                    borderRadius: BorderRadius.circular(1.h),
+                                  ),
+                                )),
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: bl,
-                          border: Border.all(width: 1, color: bl),
-                          borderRadius: BorderRadius.circular(1.h),
-                        ),
+                          InkWell(
+                            onTap: () {},
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 6.h,
+                                  width: 80.w,
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 11.h,
+                                        ),
+                                        Icon(
+                                          Icons.upload,
+                                          color: wh,
+                                        ),
+                                        all_text(
+                                            txt: "Upload Videos",
+                                            col: wh,
+                                            siz: 13.sp,
+                                            wei: FontWeight.bold,
+                                            max: 1),
+                                      ],
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: bl,
+                                    border: Border.all(width: 1, color: bl),
+                                    borderRadius: BorderRadius.circular(1.h),
+                                  ),
+                                )),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              print(
+                                  image_controller.video_url.value.toString());
+                              video_upload_controll.uploadvideos_courses(
+                                  course_id: course_id,
+                                  videoFile: image_controller.video_url.value,
+                                  title: title_conttroller.text.toString(),
+                                  subtitle:
+                                      subtitle_controller.text.toString());
+                            },
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 6.h,
+                                  width: 80.w,
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 15.h,
+                                        ),
+                                        Icon(
+                                          Icons.save,
+                                          color: wh,
+                                        ),
+                                        all_text(
+                                            txt: "Save",
+                                            col: wh,
+                                            siz: 13.sp,
+                                            wei: FontWeight.bold,
+                                            max: 1),
+                                      ],
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: bl,
+                                    border: Border.all(width: 1, color: bl),
+                                    borderRadius: BorderRadius.circular(1.h),
+                                  ),
+                                )),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              // videoplayer_controll.urlLink.value = url.toString();
+                              Get.to(() => uploaded_video_screen(
+                                    course_id: course_id,
+                                  ))?.then((value) {
+                                videoplayer_controll.geturl(url: url);
+                              });
+                            },
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 6.h,
+                                  width: 80.w,
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 11.h,
+                                        ),
+                                        Icon(
+                                          Icons.video_library_sharp,
+                                          color: wh,
+                                        ),
+                                        all_text(
+                                            txt: "Uploaded Videos",
+                                            col: wh,
+                                            siz: 13.sp,
+                                            wei: FontWeight.bold,
+                                            max: 1),
+                                      ],
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: bl,
+                                    border: Border.all(width: 1, color: bl),
+                                    borderRadius: BorderRadius.circular(1.h),
+                                  ),
+                                )),
+                          ),
+                        ],
                       )),
-                ),
-                
-                
-                
-                
-                
-                
-                
-                
-                ],)
-                ),
               ),
             ],
           ),

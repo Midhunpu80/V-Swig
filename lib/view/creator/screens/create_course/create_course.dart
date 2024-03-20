@@ -267,7 +267,8 @@ class create_course extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           Get.to(() => upload_videos_screen(
-                                course_id: snapss?['course_id'].toString(),
+                            url: snapss?['videoLink'].toString(),
+                                course_id: "snapss?['course_id'].toString()",
                               ));
                           print( snapss?['course_id'].toString(),
                           );

@@ -94,6 +94,8 @@ class my_course_screen extends StatelessWidget {
                               trailing: IconButton(
                                   onPressed: () {
                                     Get.to(() => upload_videos_screen(
+                                      url: "snap?[index]['videoLink'].toString("
+,
                                           course_id: snap?[index]['course_id'],
                                         ));
                                     print(snap?[index]['course_id'].toString());
