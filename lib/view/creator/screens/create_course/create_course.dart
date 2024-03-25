@@ -220,6 +220,9 @@ class create_course extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           course_controll.newcreate_courses(
+                              catogery_name: dropdown_controll
+                                  .changedvalue.value
+                                  .toString(),
                               title: title_controller.text,
                               subtitle: subtitle_controller.text,
                               language: language_controller.text,
@@ -267,10 +270,11 @@ class create_course extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           Get.to(() => upload_videos_screen(
-                            url: snapss?['videoLink'].toString(),
+                                url: snapss?['videoLink'].toString(),
                                 course_id: "snapss?['course_id'].toString()",
                               ));
-                          print( snapss?['course_id'].toString(),
+                          print(
+                            snapss?['course_id'].toString(),
                           );
                         },
                         child: Padding(

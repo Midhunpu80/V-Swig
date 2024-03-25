@@ -20,6 +20,7 @@ class create_course_servie extends GetxController {
     required var catogery_id,
     required var creator,
     required var creator_emailaddress,
+    required var catogery_name
   }) async {
     try {
       String course_id = Uuid().v1();
@@ -30,6 +31,7 @@ class create_course_servie extends GetxController {
           .collection('Courses')
           .doc(course_id)
           .set({
+            "catogery_name":catogery_name,
         "catogery_id": catogery_id,
         "course_id": course_id,
         "creator_uid": FirebaseAuth.instance.currentUser?.uid,

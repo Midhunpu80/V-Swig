@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -6,14 +7,18 @@ import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:sizer/sizer.dart';
 
-popualar_course_gridview() {
+popualar_course_gridview(
+    {required List<QueryDocumentSnapshot<Map<String, dynamic>>>? snap,
+    required int length}) {
   return Container(
     height: 85.h,
     width: 100.w,
     child: GridView.builder(
+        itemCount: length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, childAspectRatio: 0.7),
         itemBuilder: (context, index) {
+          final newsnap = snap?[index];
           return InkWell(
             onTap: () {
               Get.to(() => view_course_details_screen());
@@ -50,7 +55,7 @@ popualar_course_gridview() {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         all_text(
-                            txt: "Ui/ux designing the 201 \ncan bridege ",
+                            txt: newsnap?['title'].toString(),
                             col: bl,
                             siz: 10.sp,
                             wei: FontWeight.w800,
@@ -66,7 +71,7 @@ popualar_course_gridview() {
                           width: 1.h,
                         ),
                         all_text(
-                            txt: "warrenbuffet",
+                            txt: newsnap?['creato_name'],
                             col: gy,
                             siz: 9.sp,
                             wei: FontWeight.bold,
@@ -75,7 +80,7 @@ popualar_course_gridview() {
                           width: 4.h,
                         ),
                         all_text(
-                            txt: "₹150",
+                            txt: "₹${newsnap?['price']}",
                             col: blu,
                             siz: 10.sp,
                             wei: FontWeight.bold,
