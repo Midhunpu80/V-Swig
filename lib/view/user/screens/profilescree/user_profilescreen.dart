@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
 import 'package:map_int/view/user/screens/shopping_cart_screen/shopping_cart_screen.dart';
+import 'package:map_int/view/user/widgets/edit_instructor.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:sizer/sizer.dart';
@@ -65,11 +66,25 @@ class user_profile_screen extends StatelessWidget {
                   body: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Icon(
-                          Icons.person_pin,
-                          color: gy,
-                          size: 15.h,
-                        ),
+                        Obx(() => userdatasz_controll.types.value == true
+                            ? Icon(
+                                Icons.person_pin,
+                                color: gy,
+                                size: 15.h,
+                              )
+                            : IconButton(
+                                onPressed: () {
+                                  edit_insturctor(
+                                      image: newdata!['profile'],
+                                      context: context,
+                                      name: newdata['Name'],
+                                      bio: newdata['bio']);
+                                },
+                                icon: Icon(
+                                  Icons.edit_square,
+                                  color: gy,
+                                  size: 12.h,
+                                ))),
                         all_text(
                             txt: newdata!['Name'],
                             col: bl,
@@ -79,7 +94,7 @@ class user_profile_screen extends StatelessWidget {
                         Row(
                           children: [
                             SizedBox(
-                              width: 14.h,
+                              width: 8.h,
                             ),
                             Container(
                               height: 8.h,
@@ -106,7 +121,7 @@ class user_profile_screen extends StatelessWidget {
                               userdatasz_controll.fetchData();
                             },
                             child: Obx(() => all_text(
-                                txt: userdatasz_controll.types.value== true
+                                txt: userdatasz_controll.types.value == true
                                     ? "Switch to Instructor"
                                     : "Switch to Student",
                                 col: pp,
@@ -140,7 +155,6 @@ class user_profile_screen extends StatelessWidget {
                         TextButton(
                             onPressed: () {
                               auth_controll.logout();
-                              
                             },
                             child: all_text(
                                 txt: "sign out",

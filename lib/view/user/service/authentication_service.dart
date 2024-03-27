@@ -1,14 +1,16 @@
 // ignore_for_file: non_constant_identifier_names, camel_case_types, unused_local_variable
 
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
 import 'package:map_int/view/Admin/adminscreen.dart';
 import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
-import 'package:map_int/view_model/userdata_controller/userDate_controller%20.dart';
+import 'package:map_int/view/utilities/colors.dart';
+import 'package:map_int/view/utilities/custom_snackbar.dart';
 
 class authentication_service extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -103,6 +105,26 @@ class authentication_service extends GetxController {
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .update({"newtype": true, "type": "Instructor"});
       userdatasz_controll.fetchData();
+    }
+  }
+
+  Future edit_instructor(
+      {required var bio, required  Uint8List profile, var name}) async {
+    try {
+      String profileLink = await firestore_controll.uploadimagefirebase(
+          "profile", profile, true); // isLoading(true);
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .update({
+        "Name": name,
+        "bio": bio,
+        "total_courses": "0",
+        "profile": profileLink.toString()
+      }).then((value) =>
+              customsnackbar(titile: "Sucess", messege: "updated", col: gr));
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

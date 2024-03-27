@@ -21,7 +21,10 @@ popualar_course_gridview(
           final newsnap = snap?[index];
           return InkWell(
             onTap: () {
-              Get.to(() => view_course_details_screen());
+              Get.to(() => view_course_details_screen(
+                    snap: snap,
+                    index: index,
+                  ));
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),

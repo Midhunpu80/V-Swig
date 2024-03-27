@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -8,7 +9,7 @@ import 'package:sizer/sizer.dart';
 
 import '../screens/view_course_details/view_details_course_screen.dart';
 
-home_popular_course() {
+home_popular_course({List<QueryDocumentSnapshot<Map<String, dynamic>>>? snap, required int length, required var indexa}) {
   return Container(
     height: 35.h,
     width: 100.w,
@@ -17,7 +18,7 @@ home_popular_course() {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.to(() => view_course_details_screen());
+              Get.to(() => view_course_details_screen(snap: snap,index: index,));
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -36,15 +37,16 @@ home_popular_course() {
                         height: 15.h,
                         width: 66.w,
                         decoration: BoxDecoration(
+                          image: DecorationImage(image: NetworkImage(snap?[index]['thumbanil']),fit: BoxFit.cover  ),
                             borderRadius: BorderRadius.circular(2.h),
-                            color: blu),
+                            ),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         all_text(
-                            txt: "Ui/ux designing the 201 \ncan bridege ",
+                            txt: snap?[index]["title"],
                             col: bl,
                             siz: 10.sp,
                             wei: FontWeight.w800,
@@ -60,7 +62,7 @@ home_popular_course() {
                           width: 1.h,
                         ),
                         all_text(
-                            txt: "warrenbuffet",
+                            txt: snap?[index]['creato_name'],
                             col: gy,
                             siz: 9.sp,
                             wei: FontWeight.bold,
@@ -148,6 +150,6 @@ home_popular_course() {
         separatorBuilder: (context, index) {
           return const SizedBox();
         },
-        itemCount: 20),
+        itemCount:length),
   );
 }

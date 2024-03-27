@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:map_int/view/user/widgets/course_details.dart';
 import 'package:map_int/view/utilities/colors.dart';
@@ -5,7 +6,7 @@ import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:readmore/readmore.dart';
 import 'package:sizer/sizer.dart';
 
-instructor() {
+instructor({required QueryDocumentSnapshot<Map<String, dynamic>> newsnap}) {
   return Padding(
     padding: const EdgeInsets.all(12),
     child: SizedBox(
@@ -17,7 +18,7 @@ instructor() {
           newtext(
               txt: "Instructor", left: 1.h, siz: 15.sp, wei: FontWeight.bold),
           newtext(
-              txt: "7 key solutions",
+              txt: newsnap['creato_name'],
               left: 1.h,
               siz: 12.sp,
               wei: FontWeight.bold),
@@ -46,12 +47,12 @@ instructor() {
                       siz: 11.sp,
                       wei: FontWeight.w400),
                   newtext(
-                      txt: "7,481,Review",
+                      txt: "${newsnap['reviews']},Review",
                       left: 1.h,
                       siz: 11.sp,
                       wei: FontWeight.w400),
                   newtext(
-                      txt: "31,583 Students",
+                      txt: "${newsnap['students']} Students",
                       left: 1.h,
                       siz: 11.sp,
                       wei: FontWeight.w400),

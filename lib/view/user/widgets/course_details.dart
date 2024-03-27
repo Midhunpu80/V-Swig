@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:map_int/view/user/widgets/instructor.dart';
 
@@ -10,7 +11,10 @@ import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:readmore/readmore.dart';
 import 'package:sizer/sizer.dart';
 
-course_details() {
+course_details(
+    {required List<QueryDocumentSnapshot<Map<String, dynamic>>>? snap,
+    required int index}) {
+  final newsnap = snap?[index];
   return SliverAppBar(
     backgroundColor: wh,
     toolbarHeight: 380.h,
@@ -35,7 +39,7 @@ course_details() {
           padding: EdgeInsets.only(left: 2.h),
           child: SizedBox(
             child: all_text(
-                txt: "Crash course elctronics \nand pcb design ",
+                txt: newsnap!['title'],
                 col: bl,
                 siz: 17.sp,
                 wei: FontWeight.w600,
@@ -48,9 +52,7 @@ course_details() {
             height: 5.h,
             width: 80.w,
             child: all_text(
-                txt:
-                    "Crash courseelctronicsnnbbnnnnbnbbnbnnbnbnbnnbn nbfkfbbdbdbdbdbdbbdbband pcb design "
-                        .toUpperCase(),
+                txt: newsnap['subtitle'].toUpperCase(),
                 col: bl,
                 siz: 10.sp,
                 wei: FontWeight.w500,
@@ -94,7 +96,7 @@ course_details() {
             ),
             child: SizedBox(
                 child: all_text(
-                    txt: "(1418 rating)81,students",
+                    txt: "(${newsnap['rating'].toString()})0,students",
                     col: bl,
                     siz: 9.sp,
                     wei: FontWeight.w500,
@@ -111,7 +113,7 @@ course_details() {
                         fontWeight: FontWeight.w700, fontSize: 9.sp, color: bl),
                   ),
                   TextSpan(
-                    text: 'AndreL mothe',
+                    text: newsnap['creato_name'],
                     style: TextStyle(fontWeight: FontWeight.bold, color: pp),
                   ),
                 ],
@@ -121,12 +123,16 @@ course_details() {
           height: 1.h,
         ),
         bulletpoint(ico: Icons.update, label: "Last updated"),
-        bulletpoint(ico: Icons.language, label: "English"),
-        bulletpoint(ico: Icons.subtitles, label: "English"),
+        bulletpoint(ico: Icons.language, label: newsnap['language']),
+        bulletpoint(ico: Icons.subtitles, label: newsnap['language']),
         SizedBox(
           height: 2.h,
         ),
-        newtext(txt: "₹ 499", left: 2.h, siz: 20.sp, wei: FontWeight.bold),
+        newtext(
+            txt: "₹${newsnap['price']}",
+            left: 2.h,
+            siz: 20.sp,
+            wei: FontWeight.bold),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
@@ -203,8 +209,8 @@ course_details() {
         Padding(
           padding: EdgeInsets.only(left: 2.h, right: 1.h, top: 2.h),
           child: ReadMoreText(
-            'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.' *
-                12,
+           newsnap['description']
+                ,
             trimLines: 29,
             colorClickableText: pp,
             trimMode: TrimMode.Line,
@@ -215,7 +221,7 @@ course_details() {
                 fontSize: 13.sp, fontWeight: FontWeight.bold, color: bl),
           ),
         ),
-        instructor(),
+        instructor(newsnap: newsnap),
         student_feedback(),
         Padding(
           padding: const EdgeInsets.all(8.0),

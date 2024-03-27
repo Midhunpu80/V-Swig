@@ -39,7 +39,7 @@ class bottomnavigationbarscreen extends StatelessWidget {
                 if (userdatasz.types.value == true) {
                   homescreen();
                 } else {
-                  view_course_details_screen();
+                 /// view_course_details_screen();
                 }
               }
             },

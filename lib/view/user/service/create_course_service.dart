@@ -9,19 +9,18 @@ import 'package:map_int/view/utilities/colors.dart';
 import 'package:uuid/uuid.dart';
 
 class create_course_servie extends GetxController {
-  Future newcreate_courses({
-    required var title,
-    required var subtitle,
-    required var language,
-    required var price,
-    required Uint8List thumbnail,
-    required var description,
-    required var catogery,
-    required var catogery_id,
-    required var creator,
-    required var creator_emailaddress,
-    required var catogery_name
-  }) async {
+  Future newcreate_courses(
+      {required var title,
+      required var subtitle,
+      required var language,
+      required var price,
+      required Uint8List thumbnail,
+      required var description,
+      required var catogery,
+      required var catogery_id,
+      required var creator,
+      required var creator_emailaddress,
+      required var catogery_name}) async {
     try {
       String course_id = Uuid().v1();
 
@@ -31,7 +30,10 @@ class create_course_servie extends GetxController {
           .collection('Courses')
           .doc(course_id)
           .set({
-            "catogery_name":catogery_name,
+        "rating": "0",
+        "reviews": "0",
+        "students": "0",
+        "catogery_name": catogery_name,
         "catogery_id": catogery_id,
         "course_id": course_id,
         "creator_uid": FirebaseAuth.instance.currentUser?.uid,
