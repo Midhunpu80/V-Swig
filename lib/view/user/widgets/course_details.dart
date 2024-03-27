@@ -32,14 +32,18 @@ course_details(
             height: 23.h,
             width: 100.w,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(1.h), color: blu),
+              image: DecorationImage(
+                  image: NetworkImage(newsnap!['thumbanil']),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(1.h),
+            ),
           ),
         ),
         Padding(
           padding: EdgeInsets.only(left: 2.h),
           child: SizedBox(
             child: all_text(
-                txt: newsnap!['title'],
+                txt: newsnap['title'],
                 col: bl,
                 siz: 17.sp,
                 wei: FontWeight.w600,
@@ -209,8 +213,7 @@ course_details(
         Padding(
           padding: EdgeInsets.only(left: 2.h, right: 1.h, top: 2.h),
           child: ReadMoreText(
-           newsnap['description']
-                ,
+            newsnap['description'],
             trimLines: 29,
             colorClickableText: pp,
             trimMode: TrimMode.Line,
