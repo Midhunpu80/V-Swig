@@ -123,6 +123,7 @@ class authentication_service extends GetxController {
         "profile": profileLink.toString()
       }).then((value) =>
               customsnackbar(titile: "Sucess", messege: "updated", col: gr));
+              
     } catch (e) {
       print(e.toString());
     }

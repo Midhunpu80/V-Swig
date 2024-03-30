@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:map_int/main.dart';
 import 'package:map_int/view/user/widgets/instructor.dart';
 
 import 'package:map_int/view/user/widgets/starrating.dart';
@@ -155,18 +156,38 @@ course_details(
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              height: 6.h,
-              width: 45.w,
-              decoration:
-                  BoxDecoration(border: Border.all(width: 2, color: bl)),
-              child: Center(
-                child: all_text(
-                    txt: "Add to Cart",
-                    col: bl,
-                    siz: 12.sp,
-                    wei: FontWeight.bold,
-                    max: 1),
+            InkWell(
+              onTap: () {
+                car_controll.addcart(
+                    title: newsnap['title'],
+                    rating: newsnap['rating'],
+                    subtitle: newsnap['subtitle'],
+                    reviews: newsnap['reviews'],
+                    language: newsnap['language'],
+                    price: newsnap['price'],
+                    course_id: newsnap['course_id'],
+                    students: newsnap['students'],
+                    thumbnail: newsnap['thumbanil'],
+                    description: newsnap['description'],
+                    catogery: newsnap['catogery_name'],
+                    catogery_id: newsnap['catogery_id'],
+                    creator: newsnap['creato_name'],
+                    creator_emailaddress: newsnap['creator_email'],
+                    creator_id: newsnap['creator_uid']);
+              },
+              child: Container(
+                height: 6.h,
+                width: 45.w,
+                decoration:
+                    BoxDecoration(border: Border.all(width: 2, color: bl)),
+                child: Center(
+                  child: all_text(
+                      txt: "Add to Cart",
+                      col: bl,
+                      siz: 12.sp,
+                      wei: FontWeight.bold,
+                      max: 1),
+                ),
               ),
             ),
             Container(
@@ -224,7 +245,7 @@ course_details(
                 fontSize: 13.sp, fontWeight: FontWeight.bold, color: bl),
           ),
         ),
-        instructor(newsnap: newsnap),
+        instructor(newsnap: newsnap, creator_uid: newsnap['creator_uid']),
         student_feedback(),
         Padding(
           padding: const EdgeInsets.all(8.0),

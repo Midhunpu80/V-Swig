@@ -14,7 +14,7 @@ catogery_topics() {
       stream: FirebaseFirestore.instance.collection('catogery').snapshots(),
       builder: (context, snapshot) {
         return !snapshot.hasData
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : Padding(
@@ -31,38 +31,45 @@ catogery_topics() {
                           childAspectRatio: 0.7),
                       itemBuilder: (context, index) {
                         final snap = snapshot.data?.docs[index];
-                        return Container(
-                            height: 50.h,
-                            width: 80.w,
-                            decoration: BoxDecoration(
-                                //  image: DecorationImage(image: netwo),
-                                borderRadius: BorderRadius.circular(2.h),
-                                color: Colors.primaries[
-                                    Random().nextInt(Colors.primaries.length)]),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 23.h,
-                                    width: 100.w,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(snap?['image']),
-                                            fit: BoxFit.cover)),
+                        return InkWell(
+                          onTap: () {
+                            print(
+                                "${snapshot.data?.docs[index]['cat_id']}  ${snapshot.data?.docs[index]['Name']}");
+                          },
+                          child: Container(
+                              height: 50.h,
+                              width: 80.w,
+                              decoration: BoxDecoration(
+                                  //  image: DecorationImage(image: netwo),
+                                  borderRadius: BorderRadius.circular(2.h),
+                                  color: Colors.primaries[Random()
+                                      .nextInt(Colors.primaries.length)]),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      height: 23.h,
+                                      width: 100.w,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image:
+                                                  NetworkImage(snap?['image']),
+                                              fit: BoxFit.cover)),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 2.h,
-                                ),
-                                all_text(
-                                    txt: snap?['Name'],
-                                    col: wh,
-                                    siz: 14.sp,
-                                    wei: FontWeight.bold,
-                                    max: 2),
-                              ],
-                            ));
+                                  SizedBox(
+                                    height: 2.h,
+                                  ),
+                                  all_text(
+                                      txt: snap?['Name'],
+                                      col: wh,
+                                      siz: 14.sp,
+                                      wei: FontWeight.bold,
+                                      max: 2),
+                                ],
+                              )),
+                        );
                       }),
                 ),
               );

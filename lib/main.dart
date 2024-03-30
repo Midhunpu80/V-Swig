@@ -9,7 +9,9 @@ import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
 import 'package:map_int/view/user/screens/bottomnavigationscreen/bottomnavigationscreen.dart';
 import 'package:map_int/view/user/service/admin_catogery_service.dart';
 import 'package:map_int/view/user/service/authentication_service.dart';
+import 'package:map_int/view/user/service/cartservice.dart';
 import 'package:map_int/view/user/service/create_course_service.dart';
+import 'package:map_int/view_model/cart_total_controller.dart/cart_total_controler.dart';
 import 'package:map_int/view_model/dropdown_controller/dropdown_controller.dart';
 import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
 import 'package:map_int/view_model/imagepicker_controller/videoplayerappino.dart';
@@ -37,6 +39,9 @@ final dropdown_controll = Get.put(dropdown_controller());
 final course_controll = create_course_servie();
 final video_upload_controll = uploadvideo_controller();
 final videoplayer_controll = videoplayer_controller();
+final car_controll = Get.put(cart_servie());
+///final total_controller = Get.put(total_cart_controller());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
