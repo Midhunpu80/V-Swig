@@ -85,9 +85,9 @@ class cart_servie extends GetxController {
       await FirebaseFirestore.instance
           .collection("users")
           .doc(FirebaseAuth.instance.currentUser?.uid)
-          .collection("addcart")
-          .doc(course_id)
-          .update({"totalprice": sums.value});
+          .collection("totlaprice")
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .set({"totalprice": sums.value});
       print("${sums.value.toString()}---------------------------<>");
     }
   }
@@ -97,9 +97,17 @@ class cart_servie extends GetxController {
     await FirebaseFirestore.instance
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection("addcart")
-        .doc(course_id)
+        .collection("totlaprice")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .update({"totalprice": sums.value});
+    if (sums.value == 0) {
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .collection("totlaprice")
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .delete();
+    }
     print(
         "-------------removed the data ------------------------------------------${sums.value.toString()}");
   }
