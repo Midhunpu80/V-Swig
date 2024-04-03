@@ -24,15 +24,10 @@ class shopping_cart_screen extends StatelessWidget {
         builder: (context, snapshot) {
           final totalsnap = snapshot.data?.docs;
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return  const  Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
-
-          // for (var i in totalsnap!) {
-          //   sum = i.data()['totalprice'];
-          //   print(sum.toString());
-          // }
 
           return !snapshot.hasData && snapshot.data != null
               ? const Center(child: CircularProgressIndicator())
@@ -41,7 +36,7 @@ class shopping_cart_screen extends StatelessWidget {
                       FloatingActionButtonLocation.centerDocked,
                   floatingActionButton: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                       height: 7.h,
                       width: 100.w,
                       child: FloatingActionButton(

@@ -7,6 +7,7 @@ import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/user/screens/profilescree/user_profilescreen.dart';
 import 'package:map_int/view/user/screens/search_screen/search_screen.dart';
 import 'package:map_int/view/user/screens/view_course_details/view_details_course_screen.dart';
+import 'package:map_int/view/user/screens/wishList_screen/wishList_screen.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view_model/userdata_controller/userDate_controller%20.dart';
 
@@ -19,7 +20,7 @@ class bottomnavigationbarscreen extends StatelessWidget {
     homescreen(),
     // ignore: prefer_const_constructors
     search_screen(),
-    homescreen(),
+    whishList_screen(),
     // ignore: unrelated_type_equality_checks
     Obx(() => userdatasz_controll.types.value == true
         ? homescreen()

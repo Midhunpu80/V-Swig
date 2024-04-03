@@ -14,6 +14,13 @@ listof_course_details_result() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListTile(
+                  trailing: Expanded(
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.favorite,
+                            color: re,
+                          ))),
                   leading: Container(
                     height: 14.h,
                     width: 17.w,
@@ -25,7 +32,7 @@ listof_course_details_result() {
                       col: bl,
                       siz: 12.sp,
                       wei: FontWeight.bold,
-                      max: 2),
+                      max: 6),
                   subtitle: all_text(
                       txt: "Dr.Angelyu",
                       col: bl,
