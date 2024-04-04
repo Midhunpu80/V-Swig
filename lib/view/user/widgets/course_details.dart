@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:map_int/main.dart';
 import 'package:map_int/view/user/widgets/instructor.dart';
@@ -190,19 +191,60 @@ course_details(
                 ),
               ),
             ),
-            Container(
-              height: 6.h,
-              width: 45.w,
-              decoration:
-                  BoxDecoration(border: Border.all(width: 2, color: bl)),
-              child: Center(
-                  child: all_text(
-                      txt: "Add to Whishlist",
-                      col: bl,
-                      siz: 12.sp,
-                      wei: FontWeight.bold,
-                      max: 1)),
-            )
+            StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("users")
+                    .doc(FirebaseAuth.instance.currentUser?.uid)
+                    .collection("wishlist")
+                    .where("course_id", isEqualTo: newsnap['course_id'])
+                    .snapshots(),
+                builder: (context, snapshots) {
+                  final snips = snapshots.data?.docs;
+                  bool isnot = snapshots.data!.docs.isNotEmpty;
+                  List<DocumentSnapshot> favdataList = snips!;
+
+                  return InkWell(
+                    onTap: () {
+                      wishList_controll.addfav(
+                          title: newsnap['title'],
+                          rating: newsnap['rating'],
+                          subtitle: newsnap['subtitle'],
+                          reviews: newsnap['reviews'],
+                          language: newsnap['language'],
+                          price: newsnap['price'],
+                          course_id: newsnap['course_id'],
+                          students: newsnap['students'],
+                          thumbnail: newsnap['thumbanil'],
+                          description: newsnap['description'],
+                          catogery: newsnap['catogery_name'],
+                          catogery_id: newsnap['catogery_id'],
+                          creator: newsnap['creato_name'],
+                          creator_emailaddress: newsnap['creator_email'],
+                          creator_id: newsnap['creator_uid'],
+                          fav: favdataList);
+                    },
+                    child: Container(
+                      height: 6.h,
+                      width: 45.w,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: bl)),
+                      child: Center(
+                          child: favdataList.contains(isnot)
+                              ? all_text(
+                                  txt: "remove",
+                                  col: bl,
+                                  siz: 12.sp,
+                                  wei: FontWeight.bold,
+                                  max: 1)
+                              : all_text(
+                                  txt: "Add to Whishlist",
+                                  col: bl,
+                                  siz: 12.sp,
+                                  wei: FontWeight.bold,
+                                  max: 1)),
+                    ),
+                  );
+                })
           ],
         ),
         SizedBox(

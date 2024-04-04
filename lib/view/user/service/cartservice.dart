@@ -74,11 +74,12 @@ class cart_servie extends GetxController {
   }
 
   Future totalsum({required int sum, required var course_id}) async {
+    
     List data = [];
     data.add(sum);
     print(data);
     for (int i in data) {
-      sums.value += i;
+    int added =  sums.value += i;
 
       //sums.value += sum;
 
@@ -87,19 +88,19 @@ class cart_servie extends GetxController {
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .collection("totlaprice")
           .doc(FirebaseAuth.instance.currentUser?.uid)
-          .set({"totalprice": sums.value});
+          .set({"totalprice": added});
       print("${sums.value.toString()}---------------------------<>");
     }
   }
 
   Future remove({required int remove, required var course_id}) async {
-    sums.value -= remove;
+  int  removed= sums.value -= remove;
     await FirebaseFirestore.instance
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("totlaprice")
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .update({"totalprice": sums.value});
+        .update({"totalprice":removed});
     if (sums.value == 0) {
       await FirebaseFirestore.instance
           .collection("users")
