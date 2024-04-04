@@ -1,17 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:map_int/view/utilities/colors.dart';
+import 'package:map_int/view/utilities/custom_snackbar.dart';
 import 'package:uuid/uuid.dart';
 
 class wishlist_service extends GetxController {
+  var isadded = false.obs;
+
   final CollectionReference _wishListdata = FirebaseFirestore.instance
       .collection("users")
       .doc(FirebaseAuth.instance.currentUser?.uid)
       .collection("wishlist");
 
   addfav(
-      {
-      required List<DocumentSnapshot> fav,
+      {required var istrue,
       required var title,
       required var rating,
       required var subtitle,
@@ -28,7 +31,7 @@ class wishlist_service extends GetxController {
       required var creator_emailaddress,
       required var creator_id}) async {
     try {
-      if (!fav.contains(course_id)) {
+      if (!istrue) {
         await _wishListdata.doc(course_id).set({
           "rating": rating,
           "reviews": reviews,
@@ -46,10 +49,28 @@ class wishlist_service extends GetxController {
           "price": price,
           "language": language,
           "totalprice": price
+        }).then((value) {
+          customsnackbar(
+              titile: "sucess",
+              messege: "sucessfully added the wishList",
+              col: gr);
         });
       } else {
-        _wishListdata.doc(course_id).delete();
+        await removeFromWishList(course_id: course_id);
       }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  removeFromWishList({required var course_id}) async {
+    try {
+      _wishListdata.doc(course_id).delete().then((value) {
+        customsnackbar(
+            titile: "removed",
+            messege: "sucessfully removed the wishList",
+            col: re);
+      });
     } catch (e) {
       print(e.toString());
     }
