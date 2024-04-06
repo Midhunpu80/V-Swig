@@ -19,7 +19,7 @@ class search_result_screen extends StatelessWidget {
               height: 3.h,
             ),
             searchbar(ico: Icons.arrow_back,fun: back ),
-            listof_course_details_result()
+            //listof_course_details_result()
           ],
         ),
       ),
