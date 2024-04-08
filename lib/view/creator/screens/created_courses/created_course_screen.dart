@@ -94,8 +94,8 @@ class my_course_screen extends StatelessWidget {
                               trailing: IconButton(
                                   onPressed: () {
                                     Get.to(() => upload_videos_screen(
-                                      url: "snap?[index]['videoLink'].toString("
-,
+                                          url:
+                                              "snap?[index]['videoLink'].toString(",
                                           course_id: snap?[index]['course_id'],
                                         ));
                                     print(snap?[index]['course_id'].toString());
@@ -157,7 +157,7 @@ class my_course_screen extends StatelessWidget {
                               padding: EdgeInsets.only(left: 12.h),
                               child: SizedBox(
                                   child: all_text(
-                                      txt: snap![index]['price'],
+                                      txt: snap![index]['price'].toString(),
                                       col: pp,
                                       siz: 13.sp,
                                       wei: FontWeight.bold,

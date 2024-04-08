@@ -42,7 +42,6 @@ final videoplayer_controll = videoplayer_controller();
 final car_controll = Get.put(cart_servie());
 final wishList_controll = Get.put(wishlist_service());
 
-
 ///final total_controller = Get.put(total_cart_controller());
 
 class MyApp extends StatelessWidget {

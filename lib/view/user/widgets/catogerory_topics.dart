@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:map_int/view/user/screens/catogery_views_screen/catogery_viewscreen.dart';
+import 'package:map_int/view/user/widgets/Listof_courses_result.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
 import 'package:sizer/sizer.dart';
@@ -35,6 +38,11 @@ catogery_topics() {
                           onTap: () {
                             print(
                                 "${snapshot.data?.docs[index]['cat_id']}  ${snapshot.data?.docs[index]['Name']}");
+                            Get.to(() => catogery_view_screen(
+                                  snap: snapshot.data?.docs,
+                                  catogery_id: snapshot.data?.docs[index]
+                                      ['cat_id'],
+                                ));
                           },
                           child: Container(
                               height: 50.h,
