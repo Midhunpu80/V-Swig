@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:map_int/main.dart';
 import 'package:map_int/view/utilities/colors.dart';
+import 'package:map_int/view_model/search_catogery_controller/search_controller.dart';
 import 'package:sizer/sizer.dart';
 
 catogoery_search() {
+  final cat_search_controll = TextEditingController();
   return Padding(
     padding: EdgeInsets.only(
       left: 1.h,
@@ -20,8 +23,12 @@ catogoery_search() {
             SizedBox(
               width: 2.h,
             ),
-            const CircleAvatar(
-              backgroundImage: AssetImage("images/loupe.png"),
+            CircleAvatar(
+              backgroundColor: wh,
+              child: Icon(
+                Icons.search,
+                color: bl,
+              ),
             ),
             SizedBox(
               width: 2.h,
@@ -32,6 +39,12 @@ catogoery_search() {
                   height: 4.h,
                   width: 60.w,
                   child: TextFormField(
+                    style: TextStyle(color: bl),
+                    controller: cat_search_controll,
+                    onChanged: (val) {
+                      search_controll.searchquery(cat_search_controll.value.text.toString());
+                      print(cat_search_controll.value.text.toString());
+                    },
                     decoration: InputDecoration(
                         hintStyle: TextStyle(fontSize: 12.sp, color: gy),
                         hintText: "What are you Looking for",

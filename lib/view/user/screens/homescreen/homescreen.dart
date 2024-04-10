@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:map_int/main.dart';
 import 'package:map_int/view/user/screens/catogeryscreen.dart/catogery_screen.dart';
 import 'package:map_int/view/user/screens/popular_course_screen/popular_course_screen.dart';
 import 'package:map_int/view/user/screens/shopping_cart_screen/shopping_cart_screen.dart';
@@ -66,7 +69,7 @@ class homescreen extends StatelessWidget {
             final snap = snapshot.data?.docs;
 
             return !snapshot.hasData
-                ?const  Center(
+                ? const Center(
                     child: CircularProgressIndicator(),
                   )
                 : SingleChildScrollView(
@@ -125,6 +128,7 @@ class homescreen extends StatelessWidget {
                                   max: 1),
                               TextButton(
                                 onPressed: () {
+                                  search_controll.showdata.clear();
                                   Get.to(() => catogerory_screen());
                                 },
                                 child: all_text(
@@ -163,7 +167,10 @@ class homescreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        home_popular_course(snap: snap,length: snapshot.data!.docs.length,indexa: 0),
+                        home_popular_course(
+                            snap: snap,
+                            length: snapshot.data!.docs.length,
+                            indexa: 0),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -189,7 +196,10 @@ class homescreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        home_popular_course(snap: snap,length: snapshot.data!.docs.length,indexa: 0),
+                        home_popular_course(
+                            snap: snap,
+                            length: snapshot.data!.docs.length,
+                            indexa: 0),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -241,7 +251,7 @@ class homescreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                       // home_popular_course(snap: snap,length: snapshot.data!.docs.length),
+                        // home_popular_course(snap: snap,length: snapshot.data!.docs.length),
                       ],
                     ),
                   );

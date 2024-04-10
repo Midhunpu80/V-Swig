@@ -17,6 +17,7 @@ import 'package:map_int/view_model/imagepicker_controller/image_picker_controlle
 import 'package:map_int/view_model/imagepicker_controller/videoplayerappino.dart';
 import 'package:map_int/view_model/mode_controller/mode_controller.dart';
 import 'package:map_int/view_model/pagecontroller/pagecontroller.dart';
+import 'package:map_int/view_model/search_catogery_controller/search_controller.dart';
 import 'package:map_int/view_model/upload_video_controller.dart/upload_video_controller.dart';
 import 'package:map_int/view_model/userdata_controller/userDate_controller%20.dart';
 import 'package:sizer/sizer.dart';
@@ -41,6 +42,7 @@ final video_upload_controll = uploadvideo_controller();
 final videoplayer_controll = videoplayer_controller();
 final car_controll = Get.put(cart_servie());
 final wishList_controll = Get.put(wishlist_service());
+final search_controll = Get.put(search_controller());
 
 ///final total_controller = Get.put(total_cart_controller());
 
