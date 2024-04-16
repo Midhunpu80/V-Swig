@@ -23,7 +23,8 @@ catogery_topics() {
               print("error");
             } else {
               // search_controll.alldata.clear();
-              // search_controll.showdata.clear();
+              // search_controll.showdata.clear();4
+
               search_controll.getdata(
                   cat_id: i['cat_id'],
                   name: i['Name'].toString(),
@@ -50,7 +51,10 @@ catogery_topics() {
                           height: 70.h,
                           width: 100.w,
                           child: GridView.builder(
-                              itemCount: search_controll.showdata.value.length,
+                              itemCount:
+                                  search_controll.showdata.value.length > 6
+                                      ? 7
+                                      : search_controll.showdata.value.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,

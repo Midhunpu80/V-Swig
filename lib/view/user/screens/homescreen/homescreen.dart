@@ -13,6 +13,7 @@ import 'package:map_int/view/user/widgets/home_catogeory.dart';
 import 'package:map_int/view/user/widgets/home_popular_course.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
+import 'package:map_int/view_model/search_catogery_controller/search_controller.dart';
 import 'package:sizer/sizer.dart';
 
 class homescreen extends StatelessWidget {
@@ -128,8 +129,11 @@ class homescreen extends StatelessWidget {
                                   max: 1),
                               TextButton(
                                 onPressed: () {
-                                  search_controll.showdata.clear();
                                   Get.to(() => catogerory_screen());
+                                  // search_controll.showdata.toList().clear();
+                                  // search_controll.alldata.value
+                                  //     .toList()
+                                  //     .clear();
                                 },
                                 child: all_text(
                                     txt: "View all",

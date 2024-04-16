@@ -8,18 +8,25 @@ class search_controller extends GetxController {
 
   getdata({required var name, required var image, required var cat_id}) async {
     final newentry = {"name": name, "img": image, "catogery_id": cat_id};
+    bool alreadyExists = alldata.any((data) => data['cat_id'] == cat_id);
 
-    alldata.add(newentry);
+    if (alreadyExists) {
+      alldata.add(newentry);
 
-    updateshowdata();
+      updateshowdata();
+    }
   }
 
   updateshowdata() {
+    /// final uniqueSet = <Map<String, dynamic>>{}..addAll(alldata);
     final uniqueSet = <Map<String, dynamic>>{}..addAll(alldata);
 
     // Clear the existing showdata list
     showdata.clear();
-    showdata.assignAll(uniqueSet);
+    showdata.addAll(uniqueSet);
+
+    /// showdata.clear();
+
     print(showdata.toList().toString());
   }
 
@@ -27,7 +34,7 @@ class search_controller extends GetxController {
     RxList<Map<String, dynamic>> result = <Map<String, dynamic>>[].obs;
 
     if (query.isEmpty) {
-      result.assignAll(alldata.toList());
+      result.assignAll(alldata.toList().toSet().toList());
     } else {
       result.assignAll(alldata
           .toList()
@@ -36,14 +43,18 @@ class search_controller extends GetxController {
               .toLowerCase()
               .toUpperCase()
               .contains(query.toString().toLowerCase().toUpperCase()))
+          .toList()
+          .toSet()
           .toList());
     }
-    showdata.value = result.value;
+    showdata.value = result.toSet().toList();
   }
 
   @override
-  void dispose() {
+  void dispose() async {
     updateshowdata();
+    alldata.clear();
+    showdata.value.clear();
     // TODO: implement dispose
     super.dispose();
   }
