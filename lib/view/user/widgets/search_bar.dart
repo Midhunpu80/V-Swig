@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:map_int/main.dart';
 import 'package:map_int/view/user/screens/search_screen/search_result_screen.dart';
+import 'package:map_int/view/user/service/search_service.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:sizer/sizer.dart';
 
-Widget searchbar({required IconData ico, Function()?fun}) {
+Widget searchbar({required IconData ico, Function()? fun}) {
   return Row(
     children: [
       Padding(
@@ -17,6 +19,12 @@ Widget searchbar({required IconData ico, Function()?fun}) {
               color: gy.withOpacity(0.3)),
           child: Center(
             child: TextFormField(
+              onFieldSubmitted: (val) {
+                search_product_controll.query(val.toString());
+                Get.to(() => search_result_screen());
+
+                print(val);
+              },
               style: TextStyle(fontSize: 13.sp, color: bl),
               decoration: InputDecoration(
                   hintText: "Search",
@@ -25,7 +33,7 @@ Widget searchbar({required IconData ico, Function()?fun}) {
                   border: InputBorder.none,
                   prefixIcon: IconButton(
                       onPressed: () {
-                      fun!();
+                        fun!();
                       },
                       icon: Icon(
                         ico,

@@ -27,19 +27,18 @@ class play_videoscreen extends StatelessWidget {
         body:
             Obx(() => videoplayer_controll.videoController.value?.value != null
                 ? Center(
-                  child: AspectRatio(
+                    child: AspectRatio(
                       aspectRatio: 0.9,
                       child: Center(
                           child: Chewie(
-                            
                         controller: ChewieController(
-                          aspectRatio: 16/17,
+                            aspectRatio: 16 / 17,
                             autoPlay: true,
                             videoPlayerController:
                                 videoplayer_controll.videoController.value!),
                       )),
                     ),
-                )
+                  )
                 : const Center(
                     child: CircularProgressIndicator(),
                   )));

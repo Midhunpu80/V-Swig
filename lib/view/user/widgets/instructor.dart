@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:map_int/view/user/screens/insturctor_profile_screen/instructor_profile_screen.dart';
 import 'package:map_int/view/user/widgets/course_details.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
@@ -44,7 +46,7 @@ instructor(
                     Padding(
                       padding: EdgeInsets.only(left: 1.h, top: 1.h),
                       child: CircleAvatar(
-                  backgroundImage: NetworkImage(snap?['profile'] ),
+                        backgroundImage: NetworkImage(snap?['profile']),
                         radius: 5.h,
                       ),
                     ),
@@ -94,20 +96,33 @@ instructor(
                         color: bl),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 7.h,
-                    width: 100.w,
-                    decoration:
-                        BoxDecoration(border: Border.all(width: 2, color: bl)),
-                    child: Center(
-                        child: all_text(
-                            txt: "View profile",
-                            col: bl,
-                            siz: 13.sp,
-                            wei: FontWeight.bold,
-                            max: 1)),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => instructor_profile_screen(
+                          email: snap?['email'],
+                          bio: snap?['bio'],
+                          name: newsnap['creato_name'],
+                          courses: snap?['total_courses'],
+                          profile: snap?['profile'],
+                          students: newsnap['students'],
+                          reviews: newsnap['reviews'],
+                        ));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 7.h,
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: bl)),
+                      child: Center(
+                          child: all_text(
+                              txt: "View profile",
+                              col: bl,
+                              siz: 13.sp,
+                              wei: FontWeight.bold,
+                              max: 1)),
+                    ),
                   ),
                 ),
               ],

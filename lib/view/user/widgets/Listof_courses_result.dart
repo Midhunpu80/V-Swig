@@ -20,7 +20,9 @@ listof_course_details_result(
                 color: gy.withOpacity(0.2),
                 size: 7.h,
               ),
-              SizedBox(height: 2.h,),
+              SizedBox(
+                height: 2.h,
+              ),
               all_text(
                   txt: "ADD YOUR FAV WISHES",
                   col: bl.withOpacity(0.3),
@@ -39,7 +41,7 @@ listof_course_details_result(
 
                 wishList_controll.isadded.value = false;
 
-                if (snap != null && snap!.isNotEmpty) {
+                if (snap != null && snap.isNotEmpty) {
                   if (snap[index]['course_id'] == newsnap['course_id']) {
                     // Update the value of isadded accordingly
                     wishList_controll.isadded.value = true;
@@ -143,7 +145,7 @@ listof_course_details_result(
                   color: gy,
                 );
               },
-              itemCount: snap!.length));
+              itemCount: snap.length));
 }
 
 

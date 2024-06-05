@@ -37,16 +37,19 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.14.1
   get: ^4.6.6
-  http: ^1.1.0
+ 
   sizer: ^2.0.15
   google_fonts: ^6.1.0
   lottie: ^2.7.0
   animations: ^2.0.7
-  dio: ^5.2.1+1
+  
   carousel_slider: ^4.2.1
   flutter_zoom_drawer: ^3.1.1
   page_animation_transition: ^0.0.9
-  intl: ^0.18.1
+  intl: ^0.19.0
+  flutter_stripe: ^10.1.1
+  flutter_dotenv: ^5.1.0
+  http: ^1.2.1
   
   
  
@@ -103,6 +106,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

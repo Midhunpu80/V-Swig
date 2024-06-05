@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:map_int/view/utilities/colors.dart';
 import 'package:sizer/sizer.dart';
 
 starratingbar({required double itemsize, required double initalraiting}) {
@@ -8,6 +9,7 @@ starratingbar({required double itemsize, required double initalraiting}) {
     width: 20.w,
     child: Center(
       child: RatingBar.builder(
+        unratedColor: gy,
         itemSize: itemsize,
         initialRating: initalraiting,
         minRating: 1,

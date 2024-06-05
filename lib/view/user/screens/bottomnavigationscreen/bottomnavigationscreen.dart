@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/main.dart';
-import 'package:map_int/view/creator/screens/created_courses/created_course_screen.dart';
+import 'package:map_int/view/creator/screens/created_courses/my_course_screen.dart';
 
 import 'package:map_int/view/user/screens/homescreen/homescreen.dart';
 import 'package:map_int/view/user/screens/profilescree/user_profilescreen.dart';

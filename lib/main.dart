@@ -1,8 +1,10 @@
-// ignore_for_file: avoid_types_as_parameter_names, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names
 
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:map_int/view/resource/storage.dart';
 import 'package:map_int/view/user/screens/authentication/browse_or_signin.dart';
@@ -11,6 +13,7 @@ import 'package:map_int/view/user/service/admin_catogery_service.dart';
 import 'package:map_int/view/user/service/authentication_service.dart';
 import 'package:map_int/view/user/service/cartservice.dart';
 import 'package:map_int/view/user/service/create_course_service.dart';
+import 'package:map_int/view/user/service/search_service.dart';
 import 'package:map_int/view/user/service/wishlist_service.dart';
 import 'package:map_int/view_model/dropdown_controller/dropdown_controller.dart';
 import 'package:map_int/view_model/imagepicker_controller/image_picker_controller.dart';
@@ -23,9 +26,22 @@ import 'package:map_int/view_model/userdata_controller/userDate_controller%20.da
 import 'package:sizer/sizer.dart';
 
 Future<void> main() async {
+  String stripeapikey =
+      "pk_test_51PKxp9SEMCW1JXvqBaS0esV1sVFTfhWo3BDc2NnB1I0CJEusT66JTxWkOCzNKTV3mbWfYjeZx3k8yW9oEHpEmDTN00SuLkjp2C";
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // Stripe.publishableKey = stripeapikey.toString();
+
+  // //Load our .env file that contains our Stripe Secret key
+  // await dotenv.load(fileName: "assets/.env");
+
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //Assign publishable key to flutter_stripe
+
+  String secret_ley =
+      "sk_test_51PKxp9SEMCW1JXvqnBqrXe90vUKNurIbJzyKYDvo3BClEccy3G9zFaB53ymOHtb3g1bVUZBzhVgrdM8Aqi5xg1Re00T2gpAGSD";
 }
 
 final auth_controll = Get.put(authentication_service());
@@ -43,6 +59,7 @@ final videoplayer_controll = videoplayer_controller();
 final car_controll = Get.put(cart_servie());
 final wishList_controll = Get.put(wishlist_service());
 final search_controll = Get.put(search_controller());
+final search_product_controll = Get.put(search_product_service());
 
 ///final total_controller = Get.put(total_cart_controller());
 

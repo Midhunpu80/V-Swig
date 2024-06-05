@@ -8,13 +8,13 @@ class search_controller extends GetxController {
 
   getdata({required var name, required var image, required var cat_id}) async {
     final newentry = {"name": name, "img": image, "catogery_id": cat_id};
-    bool alreadyExists = alldata.any((data) => data['cat_id'] == cat_id);
+    // bool alreadyExists = alldata.any((data) => data['cat_id'] == cat_id);
 
-    if (alreadyExists) {
+    // if (alreadyExists) {
       alldata.add(newentry);
 
       updateshowdata();
-    }
+   // }
   }
 
   updateshowdata() {
@@ -54,7 +54,7 @@ class search_controller extends GetxController {
   void dispose() async {
     updateshowdata();
     alldata.clear();
-    showdata.value.clear();
+    showdata.clear();
     // TODO: implement dispose
     super.dispose();
   }

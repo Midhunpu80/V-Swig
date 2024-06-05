@@ -29,6 +29,7 @@ class admin_catogery_service extends GetxController {
       print(imageLink.toString());
 
       res = "sucess";
+    
     } catch (e) {
       res = "failed${e.toString()}";
       print(e.toString());

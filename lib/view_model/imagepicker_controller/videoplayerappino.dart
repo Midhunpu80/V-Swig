@@ -26,7 +26,6 @@ class videoplayer_controller extends GetxController {
       await videoController.value?.initialize();
       //  chewieController.autoInitialize;
       videoController.value = controller;
-      
 
       // chewieController = ChewieController(
       //     videoPlayerController: videoController.value!,

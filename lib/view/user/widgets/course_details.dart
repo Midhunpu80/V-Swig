@@ -302,7 +302,7 @@ course_details(
           ),
         ),
         instructor(newsnap: newsnap, creator_uid: newsnap['creator_uid']),
-        student_feedback(),
+        student_feedback(course_id: newsnap['course_id'] ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(

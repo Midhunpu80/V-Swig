@@ -50,6 +50,10 @@ popualar_course_gridview(
                         height: 15.h,
                         width: 66.w,
                         decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    newsnap!['thumbanil'].toString()),
+                                fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(2.h),
                             color: blu),
                       ),
@@ -58,7 +62,7 @@ popualar_course_gridview(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         all_text(
-                            txt: newsnap?['title'].toString(),
+                            txt: newsnap['title'].toString(),
                             col: bl,
                             siz: 10.sp,
                             wei: FontWeight.w800,
@@ -74,7 +78,7 @@ popualar_course_gridview(
                           width: 1.h,
                         ),
                         all_text(
-                            txt: newsnap?['creato_name'],
+                            txt: newsnap['creato_name'],
                             col: gy,
                             siz: 9.sp,
                             wei: FontWeight.bold,
@@ -83,7 +87,7 @@ popualar_course_gridview(
                           width: 4.h,
                         ),
                         all_text(
-                            txt: "₹${newsnap?['price']}",
+                            txt: "₹${newsnap['price']}",
                             col: blu,
                             siz: 10.sp,
                             wei: FontWeight.bold,

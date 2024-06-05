@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:map_int/view/creator/screens/create_course/create_course.dart';
 import 'package:map_int/view/creator/screens/upload_video_screen/upload_videos_screen.dart';
+import 'package:map_int/view/creator/widgets/my_course_options.dart';
 import 'package:map_int/view/user/widgets/starrating.dart';
 import 'package:map_int/view/utilities/colors.dart';
 import 'package:map_int/view/utilities/custom_text.dart';
@@ -93,15 +94,17 @@ class my_course_screen extends StatelessWidget {
                             ListTile(
                               trailing: IconButton(
                                   onPressed: () {
-                                    Get.to(() => upload_videos_screen(
-                                          url:
-                                              "snap?[index]['videoLink'].toString(",
-                                          course_id: snap?[index]['course_id'],
-                                        ));
+                                   options(context: context,course_id:snap?[index]['course_id'] );
+
+                                    // Get.to(() => upload_videos_screen(
+                                    //       url:
+                                    //           snap?[index]['videoLink'].toString(),
+                                    //       course_id: snap?[index]['course_id'],
+                                    //     ));
                                     print(snap?[index]['course_id'].toString());
                                   },
                                   icon: Icon(
-                                    Icons.more_horiz_rounded,
+                                    Icons.more_vert_outlined,
                                     color: bl,
                                   )),
                               leading: Container(
